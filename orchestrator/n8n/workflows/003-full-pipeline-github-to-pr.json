@@ -1,0 +1,176 @@
+{
+  "name": "003 - Full Pipeline: GitHub → Converter → PR",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "mbse-change",
+        "responseMode": "onReceived"
+      },
+      "id": "webhook-github-event",
+      "name": "GitHub Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "level": "info",
+        "message": "Received MBSE change from commit {{$json[\"commitHash\"]}}. Running converter..."
+      },
+      "id": "logger-1",
+      "name": "Log event",
+      "type": "n8n-nodes-base.logger",
+      "typeVersion": 1,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://mbse-bridge:5000/run/capella-to-arcgis",
+        "method": "POST",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "mbse_path",
+              "value": "={{$json[\"mbse_path\"] || '/git_repo/mbse/exports/sample_capella_export.json'}}"
+            }
+          ]
+        }
+      },
+      "id": "call-converter",
+      "name": "Call Capella→GeoJSON Converter",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [750, 300]
+    },
+    {
+      "parameters": {
+        "level": "info",
+        "message": "Converter result: {{JSON.stringify($json.result)}}"
+      },
+      "id": "logger-2",
+      "name": "Log converter output",
+      "type": "n8n-nodes-base.logger",
+      "typeVersion": 1,
+      "position": [1000, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "const commitHash = $json.commitHash || 'unknown';\nconst branchName = `auto-update-geojson-${Date.now()}`;\nconst prTitle = `chore: auto-generated GeoJSON from MBSE (commit ${commitHash.slice(0,7)})`;\nreturn {\n  branchName,\n  prTitle,\n  commitMessage: `Auto-generated GeoJSON from MBSE export\\n\\nTrigger commit: ${commitHash}`,\n  geojsonPath: $json.result?.geojson_path || '/git_repo/mbse/exports/output_geojson.json'\n};"
+      },
+      "id": "prepare-pr-data",
+      "name": "Prepare PR data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    },
+    {
+      "parameters": {
+        "resource": "ref",
+        "operation": "create",
+        "owner": "jrskim7",
+        "repository": "federated-rural-osdk-platform",
+        "branch": "main",
+        "newBranch": "={{$json.branchName}}"
+      },
+      "id": "create-branch",
+      "name": "Create branch",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 2,
+      "position": [1500, 300],
+      "credentials": {
+        "githubApi": {
+          "id": "1",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "owner": "jrskim7",
+        "repository": "federated-rural-osdk-platform",
+        "filePath": "mbse/exports/output_geojson.json",
+        "fileContent": "={{$items[2].json.result || '{\"type\": \"FeatureCollection\", \"features\": []}'}}"
+      },
+      "id": "commit-geojson",
+      "name": "Commit GeoJSON file",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 2,
+      "position": [1750, 300],
+      "credentials": {
+        "githubApi": {
+          "id": "1",
+          "name": "GitHub API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "GitHub Webhook": {
+      "main": [
+        [
+          {
+            "node": "Log event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log event": {
+      "main": [
+        [
+          {
+            "node": "Call Capella→GeoJSON Converter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call Capella→GeoJSON Converter": {
+      "main": [
+        [
+          {
+            "node": "Log converter output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log converter output": {
+      "main": [
+        [
+          {
+            "node": "Prepare PR data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare PR data": {
+      "main": [
+        [
+          {
+            "node": "Create branch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create branch": {
+      "main": [
+        [
+          {
+            "node": "Commit GeoJSON file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
