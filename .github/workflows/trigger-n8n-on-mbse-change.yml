@@ -1,0 +1,28 @@
+name: Trigger Orchestrator on MBSE Change
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'mbse/**'
+
+jobs:
+  notify-n8n:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Webhook to MBSE Bridge
+        env:
+          WEBHOOK_SECRET: ${{ secrets.GITHUB_WEBHOOK_SECRET }}
+          MBSE_BRIDGE_URL: ${{ secrets.MBSE_BRIDGE_WEBHOOK_URL }}
+        run: |
+          if [ -z "$MBSE_BRIDGE_URL" ]; then
+            echo "MBSE_BRIDGE_WEBHOOK_URL secret not set. Skipping."
+            exit 0
+          fi
+          
+          echo "Sending webhook to MBSE Bridge..."
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -H "X-GitHub-Event: push" \
+            -H "X-Hub-Signature-256: sha256=$(echo -n "${{ toJson(github.event) }}" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | awk '{print $2}')" \
+            -d '${{ toJson(github.event) }}' \
+            "$MBSE_BRIDGE_URL/webhook/github"

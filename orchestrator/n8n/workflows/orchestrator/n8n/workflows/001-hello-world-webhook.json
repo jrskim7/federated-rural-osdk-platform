@@ -1,0 +1,51 @@
+{
+  "name": "001 - Hello World: MBSE Change Logger",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "mbse-change",
+        "responseMode": "onReceived"
+      },
+      "id": "webhook-node",
+      "name": "MBSE Change Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "mbse-change"
+    },
+    {
+      "parameters": {
+        "level": "info",
+        "message": "Received MBSE change event from commit {{$json[\"commitHash\"]}}. Changes: {{$json[\"changes\"].length}} files."
+      },
+      "id": "logger-node",
+      "name": "Log Event",
+      "type": "n8n-nodes-base.logger",
+      "typeVersion": 1,
+      "position": [500, 300]
+    }
+  ],
+  "connections": {
+    "MBSE Change Webhook": {
+      "main": [
+        [
+          {
+            "node": "Log Event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {},
+  "staticData": null,
+  "webhooks": [
+    {
+      "webhook": "mbse-change",
+      "path": "mbse-change",
+      "isFullPath": false
+    }
+  ],
+  "versionId": "1"
+}

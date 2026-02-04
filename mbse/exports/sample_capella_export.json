@@ -1,0 +1,26 @@
+{
+  "project": "Monchique_OSDK_sample",
+  "blocks": [
+    {
+      "mbse_id": "BLK_PROJ_MH_001",
+      "type": "MicroHydro.Plant",
+      "name": "MicroHydro Alpha",
+      "properties": {
+        "minHeadHeight_m": 5.0,
+        "requiredFlowRate_m3s": 0.8,
+        "estimatedPower_kW": 48
+      },
+      "geometry": { "type": "Point", "coordinates": [ -8.482, 37.349 ] }
+    },
+    {
+      "mbse_id": "BLK_PROJ_GRAZE_001",
+      "type": "Grazing.Project",
+      "name": "Grazing Zone 12",
+      "properties": {
+        "targetArea_ha": 50,
+        "fireRiskReduction_req": true
+      },
+      "geometry": { "type": "Polygon", "coordinates": [ [ [ -8.48, 37.35 ], [ -8.47, 37.35 ], [ -8.47, 37.34 ], [ -8.48, 37.34 ], [ -8.48, 37.35 ] ] ] }
+    }
+  ]
+}

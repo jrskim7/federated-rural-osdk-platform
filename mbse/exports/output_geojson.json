@@ -1,0 +1,60 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -8.482,
+          37.349
+        ]
+      },
+      "properties": {
+        "minHeadHeight_m": 5.0,
+        "requiredFlowRate_m3s": 0.8,
+        "estimatedPower_kW": 48,
+        "mbse_id": "BLK_PROJ_MH_001",
+        "mbse_type": "MicroHydro.Plant",
+        "mbse_name": "MicroHydro Alpha"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.48,
+              37.35
+            ],
+            [
+              -8.47,
+              37.35
+            ],
+            [
+              -8.47,
+              37.34
+            ],
+            [
+              -8.48,
+              37.34
+            ],
+            [
+              -8.48,
+              37.35
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "targetArea_ha": 50,
+        "fireRiskReduction_req": true,
+        "mbse_id": "BLK_PROJ_GRAZE_001",
+        "mbse_type": "Grazing.Project",
+        "mbse_name": "Grazing Zone 12"
+      }
+    }
+  ]
+}

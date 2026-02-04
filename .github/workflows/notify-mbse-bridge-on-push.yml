@@ -1,0 +1,36 @@
+name: Notify MBSE Bridge on push
+
+on:
+  push:
+    paths:
+      - 'mbse/**'
+      - 'orchestrator/**'
+  workflow_dispatch:
+    inputs:
+      mbse_path:
+        description: 'Optional: path to MBSE export inside repo'
+        required: false
+        default: ''
+
+jobs:
+  notify-mbse-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show event info
+        run: |
+          echo "Running on $GITHUB_REPOSITORY @ $GITHUB_SHA"
+          echo "Event file: $GITHUB_EVENT_PATH"
+          cat "$GITHUB_EVENT_PATH" | jq '{ref: .ref, repository: .repository.html_url, head_commit: .head_commit.id, modified: .head_commit.modified, added: .head_commit.added, removed: .head_commit.removed}'
+
+      - name: Post event to MBSE Bridge
+        env:
+          MBSE_WEBHOOK_URL: ${{ secrets.MBSE_BRIDGE_WEBHOOK_URL }}
+          WEBHOOK_SECRET: ${{ secrets.GITHUB_WEBHOOK_SECRET }}
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+        run: |
+          if [ -z "$MBSE_WEBHOOK_URL" ]; then echo "MBSE_BRIDGE_WEBHOOK_URL secret not set"; exit 1; fi
+          payload=$(cat "$GITHUB_EVENT_PATH")
+          signature=$(printf '%s' "$payload" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | sed 's/^.* //')
+          sig_header="sha256=$signature"
+          echo "Posting to $MBSE_WEBHOOK_URL with signature $sig_header"
+          curl -sS -X POST "$MBSE_WEBHOOK_URL" -H "X-Hub-Signature-256: $sig_header" -H "Content-Type: application/json" -d @"$GITHUB_EVENT_PATH" -v
