@@ -14,12 +14,11 @@
     },
     {
       "parameters": {
-        "level": "info",
-        "message": "Received MBSE change from commit {{$json[\"commitHash\"]}}. Running converter..."
+        "functionCode": "return $json;"
       },
       "id": "logger-1",
       "name": "Log event",
-      "type": "n8n-nodes-base.logger",
+      "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [500, 300]
     },
@@ -45,12 +44,11 @@
     },
     {
       "parameters": {
-        "level": "info",
-        "message": "Converter result: {{JSON.stringify($json.result)}}"
+        "functionCode": "return $json;"
       },
       "id": "logger-2",
       "name": "Log converter output",
-      "type": "n8n-nodes-base.logger",
+      "type": "n8n-nodes-base.function",
       "typeVersion": 1,
       "position": [1000, 300]
     },
