@@ -66,43 +66,51 @@
     },
     {
       "parameters": {
-        "resource": "ref",
-        "operation": "create",
-        "owner": "jrskim7",
-        "repository": "federated-rural-osdk-platform",
-        "branch": "main",
-        "newBranch": "={{$json.branchName}}"
+        "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs",
+        "method": "POST",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParametersJson": "={\"ref\": \"refs/heads/{{$json.branchName}}\", \"sha\": \"main\"}"
       },
       "id": "create-branch",
       "name": "Create branch",
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 2,
-      "position": [1500, 300],
-      "credentials": {
-        "githubApi": {
-          "id": "1",
-          "name": "GitHub API"
-        }
-      }
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1500, 300]
     },
     {
       "parameters": {
-        "owner": "jrskim7",
-        "repository": "federated-rural-osdk-platform",
-        "filePath": "mbse/exports/output_geojson.json",
-        "fileContent": "={{$items[2].json.result || '{\"type\": \"FeatureCollection\", \"features\": []}'}}"
+        "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/contents/mbse/exports/output_geojson.json",
+        "method": "PUT",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParametersJson": "={\"message\": \"feat: update GeoJSON from MBSE converter\", \"content\": \"{{Buffer.from($json.result || '{}').toString('base64')}}\", \"branch\": \"{{$json.branchName}}\"}"
       },
       "id": "commit-geojson",
       "name": "Commit GeoJSON file",
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 2,
-      "position": [1750, 300],
-      "credentials": {
-        "githubApi": {
-          "id": "1",
-          "name": "GitHub API"
-        }
-      }
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1750, 300]
     }
   ],
   "connections": {
