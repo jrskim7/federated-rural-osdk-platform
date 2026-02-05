@@ -1,0 +1,50 @@
+{
+  "session": "Community Participatory Meeting - Monchique",
+  "date": "2026-02-05T16:44:17.342723",
+  "location": "Municipal Center, Monchique",
+  "participants": [
+    "Maria Silva (Municipal Council)",
+    "Jo\u00e3o Costa (Goat Cooperative)",
+    "Tourist Collective Reps"
+  ],
+  "modified": [
+    {
+      "id": "EucalyptusZone_12",
+      "name": "Eucalyptus Monoculture Zone 12",
+      "changes": {
+        "fireRiskIndex": {
+          "from": 0.75,
+          "to": 0.65
+        },
+        "validatedBy": {
+          "from": null,
+          "to": "Community Meeting - Feb 5 2026"
+        },
+        "validationNotes": {
+          "from": null,
+          "to": "Recent rains reduced fuel moisture"
+        }
+      }
+    },
+    {
+      "id": "Project_MicroHydro_Alpha",
+      "name": "Micro-Hydro Dam Site Alpha",
+      "changes": {
+        "suitabilityScore": {
+          "from": 0.85,
+          "to": 0.92
+        },
+        "implementationPhase": {
+          "from": "Phase1_2026",
+          "to": "Phase1_2026_Q2"
+        },
+        "communityApproval": {
+          "from": null,
+          "to": "Yes"
+        }
+      }
+    }
+  ],
+  "added": [],
+  "removed": []
+}
