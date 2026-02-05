@@ -111,7 +111,7 @@
           ]
         },
         "sendBody": true,
-        "bodyParametersJson": "={\"ref\": \"refs/heads/{{$node['Finalize PR data'].json.branchName}}\", \"sha\": \"{{$node['Get main SHA'].json.object.sha}}\"}"
+        "bodyParametersJson": "={\"ref\": \"refs/heads/{{ $json.branchName || $node['Finalize PR data'].json.branchName }}\", \"sha\": \"{{ $node['Get main SHA'].json.object.sha }}\"}"
       },
       "id": "create-branch",
       "name": "Create branch",
