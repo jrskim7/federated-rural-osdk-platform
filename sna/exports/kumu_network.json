@@ -1,0 +1,147 @@
+{
+  "elements": [
+    {
+      "_id": "Node_Municipality_Monchique",
+      "label": "Monchique",
+      "type": "Municipality",
+      "tags": [
+        "Public",
+        "Municipal"
+      ],
+      "description": "Municipality - Public",
+      "attributes": {
+        "Sector": "Public",
+        "Level": "Municipal",
+        "Status": "active",
+        "Degree Centrality": 0,
+        "Weighted Degree": 0.0,
+        "Capacity": 0.72,
+        "Population": 8500,
+        "Budget (€)": 0,
+        "MBSE Block ID": "BLK_MUN_001"
+      }
+    },
+    {
+      "_id": "Node_Project_MicroHydro_01",
+      "label": "Micro-Hydro Dam Site Alpha",
+      "type": "Energy.ProjectSite",
+      "tags": [
+        "Private",
+        "Municipal"
+      ],
+      "description": "Energy.ProjectSite - Private",
+      "attributes": {
+        "Sector": "Private",
+        "Level": "Municipal",
+        "Status": "Feasibility_Study",
+        "Degree Centrality": 0,
+        "Weighted Degree": 0.0,
+        "Capacity": 0.5,
+        "Population": 0,
+        "Budget (€)": 0,
+        "MBSE Block ID": "BLK_PROJ_ENER_042"
+      }
+    },
+    {
+      "_id": "Node_Coop_Algarve",
+      "label": "Algarve Goat Cooperative",
+      "type": "PrivateEntity",
+      "tags": [
+        "Private",
+        "Municipal"
+      ],
+      "description": "PrivateEntity - Private",
+      "attributes": {
+        "Sector": "Private",
+        "Level": "Municipal",
+        "Status": "active",
+        "Degree Centrality": 2,
+        "Weighted Degree": 2.2,
+        "Capacity": 0.8,
+        "Population": 45,
+        "Budget (€)": 0,
+        "MBSE Block ID": "BLK_ENT_PVT_001"
+      }
+    },
+    {
+      "_id": "Node_Mun_Camara",
+      "label": "Monchique Municipal Council",
+      "type": "PublicEntity",
+      "tags": [
+        "Public",
+        "Municipal"
+      ],
+      "description": "PublicEntity - Public",
+      "attributes": {
+        "Sector": "Public",
+        "Level": "Municipal",
+        "Status": "active",
+        "Degree Centrality": 2,
+        "Weighted Degree": 2.2,
+        "Capacity": 0.5,
+        "Population": 0,
+        "Budget (€)": 2500000,
+        "MBSE Block ID": "BLK_ENT_PUB_001"
+      }
+    },
+    {
+      "_id": "Node_Tourism_Group_B",
+      "label": "Monchique Tourism Collective",
+      "type": "CivilSocietyEntity",
+      "tags": [
+        "Civil Society",
+        "Municipal"
+      ],
+      "description": "CivilSocietyEntity - Civil Society",
+      "attributes": {
+        "Sector": "Civil Society",
+        "Level": "Municipal",
+        "Status": "active",
+        "Degree Centrality": 2,
+        "Weighted Degree": 2.2,
+        "Capacity": 0.5,
+        "Population": 23,
+        "Budget (€)": 45000,
+        "MBSE Block ID": "BLK_ENT_CSO_001"
+      }
+    }
+  ],
+  "connections": [
+    {
+      "_id": "connection_0",
+      "from": "Node_Coop_Algarve",
+      "to": "Node_Mun_Camara",
+      "label": "partnership",
+      "direction": "mutual",
+      "attributes": {
+        "Type": "partnership",
+        "Weight": 1.1,
+        "Validation Event": ""
+      }
+    },
+    {
+      "_id": "connection_1",
+      "from": "Node_Coop_Algarve",
+      "to": "Node_Tourism_Group_B",
+      "label": "partnership",
+      "direction": "mutual",
+      "attributes": {
+        "Type": "partnership",
+        "Weight": 1.1,
+        "Validation Event": ""
+      }
+    },
+    {
+      "_id": "connection_2",
+      "from": "Node_Mun_Camara",
+      "to": "Node_Tourism_Group_B",
+      "label": "partnership",
+      "direction": "mutual",
+      "attributes": {
+        "Type": "partnership",
+        "Weight": 1.1,
+        "Validation Event": ""
+      }
+    }
+  ]
+}
