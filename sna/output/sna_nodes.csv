@@ -1,0 +1,6 @@
+id,name,type,sector,level,status,degree_centrality,weighted_degree,capacity,population,budget,mbseBlockId
+Node_Municipality_Monchique,Monchique,Municipality,Public,Municipal,active,0,0,0.72,8500,0,BLK_MUN_001
+Node_Project_MicroHydro_01,Micro-Hydro Dam Site Alpha,Energy.ProjectSite,Private,Municipal,Feasibility_Study,0,0,0.5,0,0,BLK_PROJ_ENER_042
+Node_Coop_Algarve,Algarve Goat Cooperative,PrivateEntity,Private,Municipal,active,2,2.2,0.8,45,0,BLK_ENT_PVT_001
+Node_Mun_Camara,Monchique Municipal Council,PublicEntity,Public,Municipal,active,2,2.2,0.5,0,2500000,BLK_ENT_PUB_001
+Node_Tourism_Group_B,Monchique Tourism Collective,CivilSocietyEntity,Civil Society,Municipal,active,2,2.2,0.5,23,45000,BLK_ENT_CSO_001

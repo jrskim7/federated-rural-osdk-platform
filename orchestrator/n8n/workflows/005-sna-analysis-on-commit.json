@@ -1,0 +1,226 @@
+{
+  "name": "005-sna-analysis-on-commit",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sna-analysis",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "GitHub Webhook - SNA Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "sna-analysis-trigger"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Extract commit info from GitHub webhook\nconst commitMessage = $json.head_commit?.message || 'No commit message';\nconst author = $json.head_commit?.author?.name || 'Unknown';\nconst timestamp = $json.head_commit?.timestamp || new Date().toISOString();\nconst files = $json.head_commit?.modified || [];\n\n// Check if any GeoJSON files were modified\nconst geojsonFiles = files.filter(f => f.endsWith('.geojson'));\nconst changeSummaries = files.filter(f => f.includes('change_summary'));\n\nreturn {\n  json: {\n    commitMessage,\n    author,\n    timestamp,\n    geojsonFiles,\n    changeSummaries,\n    shouldRunSNA: geojsonFiles.length > 0 || changeSummaries.length > 0,\n    repository: $json.repository?.full_name || 'Unknown'\n  }\n};"
+      },
+      "id": "check-sna-trigger",
+      "name": "Check if SNA Should Run",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.shouldRunSNA}}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "if-sna-needed",
+      "name": "If SNA Needed",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "command": "cd /Users/jrbd/Documents/GitHub/federated-rural-osdk-platform && /Users/jrbd/Documents/GitHub/federated-rural-osdk-platform/.venv/bin/python scripts/sna_integration.py"
+      },
+      "id": "run-sna-analysis",
+      "name": "Run SNA Integration",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [850, 200]
+    },
+    {
+      "parameters": {
+        "command": "cd /Users/jrbd/Documents/GitHub/federated-rural-osdk-platform && /Users/jrbd/Documents/GitHub/federated-rural-osdk-platform/.venv/bin/python scripts/sna_export_kumu.py"
+      },
+      "id": "export-kumu",
+      "name": "Export to Kumu",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [1050, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Read SNA report file\nconst fs = require('fs');\nconst path = '/Users/jrbd/Documents/GitHub/federated-rural-osdk-platform/sna/output';\n\n// Find latest SNA report\nconst files = fs.readdirSync(path);\nconst reportFiles = files.filter(f => f.startsWith('sna_report_'));\nreportFiles.sort().reverse();\n\nif (reportFiles.length > 0) {\n  const reportPath = `${path}/${reportFiles[0]}`;\n  const reportContent = fs.readFileSync(reportPath, 'utf8');\n  \n  return {\n    json: {\n      reportFile: reportFiles[0],\n      reportContent,\n      status: 'SNA Analysis Complete',\n      timestamp: new Date().toISOString()\n    }\n  };\n} else {\n  return {\n    json: {\n      status: 'No SNA report found',\n      timestamp: new Date().toISOString()\n    }\n  };\n}"
+      },
+      "id": "read-sna-report",
+      "name": "Read SNA Report",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1250, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.github.com/repos/{{$node[\"Check if SNA Should Run\"].json[\"repository\"]}}/issues",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "token YOUR_GITHUB_TOKEN"
+            },
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "title",
+              "value": "SNA Analysis Complete - {{$node[\"Check if SNA Should Run\"].json[\"timestamp\"]}}"
+            },
+            {
+              "name": "body",
+              "value": "## Social Network Analysis Results\\n\\n**Commit**: {{$node[\"Check if SNA Should Run\"].json[\"commitMessage\"]}}\\n**Author**: {{$node[\"Check if SNA Should Run\"].json[\"author\"]}}\\n\\n### Report Summary\\n```\\n{{$json.reportContent}}\\n```\\n\\n### Output Files\\n- SNA Nodes CSV: `/sna/output/sna_nodes.csv`\\n- SNA Edges CSV: `/sna/output/sna_edges.csv`\\n- GraphML: `/sna/output/sna_network_*.graphml`\\n- Kumu JSON: `/sna/output/kumu_network_*.json`\\n\\n### Next Steps\\n1. Import into Gephi or Kumu for visualization\\n2. Analyze partnership strengths\\n3. Identify key actors for community engagement\\n4. Update ArcGIS dashboards with network metrics"
+            },
+            {
+              "name": "labels",
+              "value": "[\"SNA\", \"analysis\", \"automated\"]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "create-github-issue",
+      "name": "Create GitHub Issue (Optional)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [1450, 200],
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{JSON.stringify($json)}}"
+      },
+      "id": "respond-success",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1650, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"status\": \"skipped\", \"reason\": \"No GeoJSON changes detected\"}"
+      },
+      "id": "respond-skipped",
+      "name": "Respond Skipped",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [850, 400]
+    }
+  ],
+  "connections": {
+    "GitHub Webhook - SNA Trigger": {
+      "main": [
+        [
+          {
+            "node": "Check if SNA Should Run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if SNA Should Run": {
+      "main": [
+        [
+          {
+            "node": "If SNA Needed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If SNA Needed": {
+      "main": [
+        [
+          {
+            "node": "Run SNA Integration",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond Skipped",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run SNA Integration": {
+      "main": [
+        [
+          {
+            "node": "Export to Kumu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Export to Kumu": {
+      "main": [
+        [
+          {
+            "node": "Read SNA Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read SNA Report": {
+      "main": [
+        [
+          {
+            "node": "Respond Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "1.0.0",
+  "id": "005-sna-analysis",
+  "meta": {
+    "instanceId": "federated-rural-osdk-platform"
+  },
+  "tags": []
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="name" for="node" attr.name="name" attr.type="string"/>
+  <key id="type" for="node" attr.name="type" attr.type="string"/>
+  <key id="sector" for="node" attr.name="sector" attr.type="string"/>
+  <key id="centrality" for="node" attr.name="degree_centrality" attr.type="int"/>
+  <key id="weight" for="edge" attr.name="weight" attr.type="double"/>
+  <graph id="G" edgedefault="undirected">
+    <node id="Node_Municipality_Monchique">
+      <data key="name">Monchique</data>
+      <data key="type">Municipality</data>
+      <data key="sector">Public</data>
+      <data key="centrality">0</data>
+    </node>
+    <node id="Node_Project_MicroHydro_01">
+      <data key="name">Micro-Hydro Dam Site Alpha</data>
+      <data key="type">Energy.ProjectSite</data>
+      <data key="sector">Private</data>
+      <data key="centrality">0</data>
+    </node>
+    <node id="Node_Coop_Algarve">
+      <data key="name">Algarve Goat Cooperative</data>
+      <data key="type">PrivateEntity</data>
+      <data key="sector">Private</data>
+      <data key="centrality">2</data>
+    </node>
+    <node id="Node_Mun_Camara">
+      <data key="name">Monchique Municipal Council</data>
+      <data key="type">PublicEntity</data>
+      <data key="sector">Public</data>
+      <data key="centrality">2</data>
+    </node>
+    <node id="Node_Tourism_Group_B">
+      <data key="name">Monchique Tourism Collective</data>
+      <data key="type">CivilSocietyEntity</data>
+      <data key="sector">Civil Society</data>
+      <data key="centrality">2</data>
+    </node>
+    <edge id="e0" source="Node_Coop_Algarve" target="Node_Mun_Camara">
+      <data key="weight">1.1</data>
+    </edge>
+    <edge id="e1" source="Node_Coop_Algarve" target="Node_Tourism_Group_B">
+      <data key="weight">1.1</data>
+    </edge>
+    <edge id="e2" source="Node_Mun_Camara" target="Node_Tourism_Group_B">
+      <data key="weight">1.1</data>
+    </edge>
+  </graph>
+</graphml>

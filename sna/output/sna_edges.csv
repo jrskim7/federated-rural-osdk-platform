@@ -1,0 +1,4 @@
+source,target,type,weight,bidirectional,validation_event
+Node_Coop_Algarve,Node_Mun_Camara,partnership,1.1,True,
+Node_Coop_Algarve,Node_Tourism_Group_B,partnership,1.1,True,
+Node_Mun_Camara,Node_Tourism_Group_B,partnership,1.1,True,

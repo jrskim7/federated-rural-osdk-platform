@@ -1,0 +1,36 @@
+================================================================================
+SOCIAL NETWORK ANALYSIS REPORT
+Generated: 2026-02-05 17:21:59
+================================================================================
+
+Network Overview:
+  • Total Actors: 5
+  • Total Partnerships: 3
+  • Average Connections per Actor: 1.2
+
+Actor Distribution by Sector:
+  • Public: 2
+  • Private: 2
+  • Civil Society: 1
+
+Top 5 Central Actors (by degree):
+  1. Algarve Goat Cooperative (Private)
+     Connections: 2, Weighted: 2.2
+  2. Monchique Municipal Council (Public)
+     Connections: 2, Weighted: 2.2
+  3. Monchique Tourism Collective (Civil Society)
+     Connections: 2, Weighted: 2.2
+  4. Monchique (Public)
+     Connections: 0, Weighted: 0
+  5. Micro-Hydro Dam Site Alpha (Private)
+     Connections: 0, Weighted: 0
+
+Top 5 Strongest Partnerships:
+  1. Algarve Goat Cooperative ↔ Monchique Municipal Council
+     Weight: 1.10, Type: partnership
+  2. Algarve Goat Cooperative ↔ Monchique Tourism Collective
+     Weight: 1.10, Type: partnership
+  3. Monchique Municipal Council ↔ Monchique Tourism Collective
+     Weight: 1.10, Type: partnership
+
+================================================================================
