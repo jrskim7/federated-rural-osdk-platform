@@ -45,6 +45,28 @@
     },
     {
       "parameters": {
+        "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs/heads/main",
+        "method": "GET",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        }
+      },
+      "id": "get-main-sha",
+      "name": "Get main SHA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1000, 260]
+    },
+    {
+      "parameters": {
         "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs",
         "method": "POST",
         "authentication": "predefinedCredentialType",
@@ -59,13 +81,13 @@
           ]
         },
         "sendBody": true,
-        "bodyParametersJson": "={\"ref\": \"refs/heads/{{$json.branchName}}\", \"sha\": \"main\"}"
+        "bodyParametersJson": "={\"ref\": \"refs/heads/{{$json.branchName}}\", \"sha\": \"{{$node['Get main SHA'].json.object.sha}}\"}"
       },
       "id": "create-branch",
       "name": "Create branch",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
-      "position": [1000, 300]
+      "position": [1200, 300]
     },
     {
       "parameters": {
@@ -116,6 +138,17 @@
       ]
     },
     "Prepare Data": {
+      "main": [
+        [
+          {
+            "node": "Get main SHA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get main SHA": {
       "main": [
         [
           {

@@ -65,6 +65,16 @@
     },
     {
       "parameters": {
+        "functionCode": "// Ensure branchName, commitMessage and attach geojsonData for commit\nconst branchName = $json.branchName || `auto-update-geojson-${Date.now()}`;\nconst commitMessage = $json.commitMessage || 'Auto-generated GeoJSON from MBSE export';\n// Try various locations for the converter output\nconst geojson = $json.result || $json.geojson || $json.geojsonData || (Array.isArray($items) && $items[0] && $items[0].json && $items[0].json.result) || {};\nreturn { branchName, commitMessage, geojsonData: geojson };"
+      },
+      "id": "finalize-pr-data",
+      "name": "Finalize PR data",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1300, 300]
+    },
+    {
+      "parameters": {
         "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs/heads/main",
         "method": "GET",
         "authentication": "predefinedCredentialType",
@@ -125,7 +135,7 @@
           ]
         },
         "sendBody": true,
-        "bodyParametersJson": "={\"message\": \"feat: update GeoJSON from MBSE converter\", \"content\": \"{{Buffer.from($json.result || '{}').toString('base64')}}\", \"branch\": \"{{$json.branchName}}\"}"
+        "bodyParametersJson": "={\"message\": \"feat: update GeoJSON from MBSE converter\", \"content\": \"{{Buffer.from(JSON.stringify($json.geojsonData || {})).toString('base64')}}\", \"branch\": \"{{$json.branchName}}\"}"
       },
       "id": "commit-geojson",
       "name": "Commit GeoJSON file",
@@ -180,6 +190,17 @@
       ]
     },
     "Prepare PR data": {
+      "main": [
+        [
+          {
+            "node": "Finalize PR data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Finalize PR data": {
       "main": [
         [
           {
