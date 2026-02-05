@@ -4,7 +4,8 @@
     {
       "parameters": {
         "path": "mbse-change",
-        "responseMode": "onReceived"
+        "responseMode": "onReceived",
+        "httpMethod": "POST"
       },
       "id": "webhook-github-event",
       "name": "GitHub Webhook",
