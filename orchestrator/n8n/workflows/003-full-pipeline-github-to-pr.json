@@ -97,6 +97,29 @@
     },
     {
       "parameters": {
+        "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs/heads/{{ $json.branchName || $node['Finalize PR data'].json.branchName }}",
+        "method": "GET",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "githubApi",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Accept",
+              "value": "application/vnd.github.v3+json"
+            }
+          ]
+        }
+      },
+      "id": "check-branch-exists",
+      "name": "Check branch exists",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1350, 300],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
         "url": "=https://api.github.com/repos/jrskim7/federated-rural-osdk-platform/git/refs",
         "method": "POST",
         "authentication": "predefinedCredentialType",
@@ -117,7 +140,8 @@
       "name": "Create branch",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.1,
-      "position": [1500, 300]
+      "position": [1500, 300],
+      "continueOnFail": true
     },
     {
       "parameters": {
@@ -212,6 +236,17 @@
       ]
     },
     "Get main SHA": {
+      "main": [
+        [
+          {
+            "node": "Check branch exists",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check branch exists": {
       "main": [
         [
           {
