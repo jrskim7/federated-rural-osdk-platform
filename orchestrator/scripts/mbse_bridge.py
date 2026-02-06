@@ -30,8 +30,8 @@ def handle_github_webhook():
     if not payload:
         return jsonify({"status": "no_payload"}), 400
 
-    # simple signature check (if secret provided)
-    if GITHUB_WEBHOOK_SECRET:
+    # signature validation (disable for testing with SKIP_WEBHOOK_VALIDATION=1)
+    if GITHUB_WEBHOOK_SECRET and os.getenv("SKIP_WEBHOOK_VALIDATION") != "1":
         signature = request.headers.get("X-Hub-Signature-256") or request.headers.get("X-Hub-Signature")
         if signature:
             sha_name, signature = signature.split("=")

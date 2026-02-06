@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-02-06T00:19:42.048168Z",
+  "rainfallIndex": 0.6,
+  "communitySupportIndex": 0.8140000000000002,
+  "featureUpdates": [
+    {
+      "id": "Project_MicroHydro_Alpha",
+      "type": "Energy.ProjectSite",
+      "waterAvailability": 0.6940000000000001,
+      "suitabilityNext": 1.0
+    },
+    {
+      "id": "EucalyptusZone_12",
+      "type": "EcologicalZone",
+      "biomassNext": 1036.85,
+      "fireRiskNext": 0.6395,
+      "grazingCapacity": 21.0
+    }
+  ]
+}

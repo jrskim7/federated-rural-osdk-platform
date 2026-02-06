@@ -3,4 +3,4 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY mbse_bridge.py .
-CMD ["python", "mbse_bridge.py"]
+CMD ["python", "-u", "mbse_bridge.py"]

@@ -1,0 +1,233 @@
+{
+  "type": "FeatureCollection",
+  "name": "Monchique Federated OSDK Model",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "EPSG:4326"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "Municipality_Monchique",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -8.0,
+              37.3
+            ],
+            [
+              -7.95,
+              37.3
+            ],
+            [
+              -7.95,
+              37.35
+            ],
+            [
+              -8.0,
+              37.35
+            ],
+            [
+              -8.0,
+              37.3
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Monchique",
+        "type": "Municipality",
+        "level": "Municipal",
+        "sector": "Public",
+        "mbseBlockId": "BLK_MUN_001",
+        "snaNodeId": "Node_Municipality_Monchique",
+        "population": 8500,
+        "area_ha": 45000,
+        "gdp_euros": 125000000,
+        "governanceScore": 0.72,
+        "status": "active",
+        "jurisdiction": "Algarve",
+        "contactEmail": "camara@monchique.pt"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Project_MicroHydro_Alpha",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.98,
+          37.32
+        ]
+      },
+      "properties": {
+        "name": "Micro-Hydro Dam Site Alpha",
+        "type": "Energy.ProjectSite",
+        "level": "Municipal",
+        "sector": "Private",
+        "mbseBlockId": "BLK_PROJ_ENER_042",
+        "snaNodeId": "Node_Project_MicroHydro_01",
+        "status": "Feasibility_Study",
+        "estimatedOutput_kW": 50,
+        "minHeadHeight_m": 15,
+        "requiredFlowRate_m3s": 0.5,
+        "suitabilityScore": 0.85,
+        "estimatedCost_euros": 75000,
+        "implementationPhase": "Phase1_2026",
+        "linkedCooperativeId": "Coop_Algarve",
+        "linkedMunicipalityId": "Municipality_Monchique",
+        "sd_waterAvailability_m3s": 0.694,
+        "sd_suitabilityScore": 1.0,
+        "sd_timestamp": "2026-02-06T00:19:42.048168Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Coop_Algarve",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.99,
+          37.31
+        ]
+      },
+      "properties": {
+        "name": "Algarve Goat Cooperative",
+        "type": "PrivateEntity",
+        "level": "Municipal",
+        "sector": "Private",
+        "mbseBlockId": "BLK_ENT_PVT_001",
+        "snaNodeId": "Node_Coop_Algarve",
+        "memberCount": 45,
+        "managementCapacity": 0.8,
+        "revenue_euros": 180000,
+        "grazingIntensity": 0.5,
+        "status": "active",
+        "partnershipIds": [
+          "Mun_Camara",
+          "Tourism_Group_B"
+        ],
+        "adoptedMethodologies": [
+          "MBSE",
+          "SystemDynamics"
+        ],
+        "methodologyAdoptionStatus": "Adopted"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "EucalyptusZone_12",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -7.97,
+              37.31
+            ],
+            [
+              -7.96,
+              37.31
+            ],
+            [
+              -7.96,
+              37.32
+            ],
+            [
+              -7.97,
+              37.32
+            ],
+            [
+              -7.97,
+              37.31
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "name": "Eucalyptus Monoculture Zone 12",
+        "type": "EcologicalZone",
+        "level": "Municipal",
+        "sector": "Environment",
+        "mbseBlockId": "BLK_ECO_ZONE_12",
+        "biomassStock_tons": 1000,
+        "area_ha": 50,
+        "fireRiskIndex": 0.75,
+        "currentUse": "Forestry",
+        "projectedUse_Phase1": "Grazing_and_Forestry",
+        "projectedUse_Phase2": "Mixed_Agroforestry",
+        "grazableArea_ha": 35,
+        "estimatedImplementationCost_euros": 25000,
+        "carbonSequestration_tonsPerYear": 15,
+        "sd_biomassStock_tons": 1036.85,
+        "sd_fireRiskIndex": 0.639,
+        "sd_grazingCapacity_tons": 21.0,
+        "sd_timestamp": "2026-02-06T00:19:42.048168Z"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Mun_Camara",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.99,
+          37.325
+        ]
+      },
+      "properties": {
+        "name": "Monchique Municipal Council",
+        "type": "PublicEntity",
+        "level": "Municipal",
+        "sector": "Public",
+        "mbseBlockId": "BLK_ENT_PUB_001",
+        "snaNodeId": "Node_Mun_Camara",
+        "budget_euros": 2500000,
+        "governmentLevel": "Local",
+        "status": "active",
+        "partnershipIds": [
+          "Coop_Algarve",
+          "Tourism_Group_B"
+        ],
+        "adoptedMethodologies": [
+          "MBSE",
+          "SystemDynamics",
+          "QSEM"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "Tourism_Group_B",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.995,
+          37.33
+        ]
+      },
+      "properties": {
+        "name": "Monchique Tourism Collective",
+        "type": "CivilSocietyEntity",
+        "level": "Municipal",
+        "sector": "Civil Society",
+        "mbseBlockId": "BLK_ENT_CSO_001",
+        "snaNodeId": "Node_Tourism_Group_B",
+        "memberCount": 23,
+        "budget_euros": 45000,
+        "status": "active",
+        "partnershipIds": [
+          "Coop_Algarve",
+          "Mun_Camara"
+        ],
+        "adoptedMethodologies": [
+          "SystemDynamics"
+        ]
+      }
+    }
+  ]
+}

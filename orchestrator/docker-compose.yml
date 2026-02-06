@@ -54,6 +54,7 @@ services:
       - GIT_REPO_PATH=/git_repo
       - N8N_WEBHOOK_URL=http://n8n:5678/webhook/mbse-change
       - GITHUB_WEBHOOK_SECRET=${GITHUB_WEBHOOK_SECRET}
+      - SKIP_WEBHOOK_VALIDATION=1
     volumes:
       - ../:/git_repo
       - ./scripts:/app

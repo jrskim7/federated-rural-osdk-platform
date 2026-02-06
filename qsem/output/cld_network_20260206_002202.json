@@ -1,0 +1,202 @@
+{
+  "metadata": {
+    "name": "Monchique QSEM CLD",
+    "generated": "2026-02-06T00:22:02.964635Z",
+    "description": "Causal loop diagram derived from GeoJSON factors"
+  },
+  "elements": [
+    {
+      "id": "Community_Governance",
+      "label": "Community Governance",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.72
+      }
+    },
+    {
+      "id": "Suitability",
+      "label": "Suitability",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.85
+      }
+    },
+    {
+      "id": "Water_Requirement",
+      "label": "Water Requirement",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.5
+      }
+    },
+    {
+      "id": "Grazing_Intensity",
+      "label": "Grazing Intensity",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.5
+      }
+    },
+    {
+      "id": "Management_Capacity",
+      "label": "Management Capacity",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.8
+      }
+    },
+    {
+      "id": "Economic_Resilience",
+      "label": "Economic Resilience",
+      "type": "Factor",
+      "attributes": {
+        "value": 180000.0
+      }
+    },
+    {
+      "id": "Biomass_Stock",
+      "label": "Biomass Stock",
+      "type": "Factor",
+      "attributes": {
+        "value": 1000.0
+      }
+    },
+    {
+      "id": "Fire_Risk",
+      "label": "Fire Risk",
+      "type": "Factor",
+      "attributes": {
+        "value": 0.75
+      }
+    },
+    {
+      "id": "Grazable_Area",
+      "label": "Grazable Area",
+      "type": "Factor",
+      "attributes": {
+        "value": 35.0
+      }
+    },
+    {
+      "id": "Governance_Capacity",
+      "label": "Governance Capacity",
+      "type": "Factor",
+      "attributes": {
+        "value": 2500000.0
+      }
+    },
+    {
+      "id": "Tourism_Pressure",
+      "label": "Tourism Pressure",
+      "type": "Factor",
+      "attributes": {
+        "value": 23.0
+      }
+    }
+  ],
+  "connections": [
+    {
+      "id": "cld_0",
+      "from": "Grazing_Intensity",
+      "to": "Biomass_Stock",
+      "type": "causal",
+      "attributes": {
+        "polarity": "-",
+        "rationale": "Grazing reduces biomass"
+      }
+    },
+    {
+      "id": "cld_1",
+      "from": "Biomass_Stock",
+      "to": "Fire_Risk",
+      "type": "causal",
+      "attributes": {
+        "polarity": "+",
+        "rationale": "More biomass increases fuel load"
+      }
+    },
+    {
+      "id": "cld_2",
+      "from": "Governance_Capacity",
+      "to": "Fire_Risk",
+      "type": "causal",
+      "attributes": {
+        "polarity": "-",
+        "rationale": "Better governance reduces fire risk"
+      }
+    },
+    {
+      "id": "cld_3",
+      "from": "Management_Capacity",
+      "to": "Fire_Risk",
+      "type": "causal",
+      "attributes": {
+        "polarity": "-",
+        "rationale": "Improved management reduces risk"
+      }
+    },
+    {
+      "id": "cld_4",
+      "from": "Tourism_Pressure",
+      "to": "Fire_Risk",
+      "type": "causal",
+      "attributes": {
+        "polarity": "+",
+        "rationale": "Higher tourism pressure elevates risk"
+      }
+    },
+    {
+      "id": "cld_5",
+      "from": "Fire_Risk",
+      "to": "Suitability",
+      "type": "causal",
+      "attributes": {
+        "polarity": "-",
+        "rationale": "Risk lowers project suitability"
+      }
+    },
+    {
+      "id": "cld_6",
+      "from": "Economic_Resilience",
+      "to": "Management_Capacity",
+      "type": "causal",
+      "attributes": {
+        "polarity": "+",
+        "rationale": "Revenue supports management"
+      }
+    },
+    {
+      "id": "cld_7",
+      "from": "Community_Governance",
+      "to": "Management_Capacity",
+      "type": "causal",
+      "attributes": {
+        "polarity": "+",
+        "rationale": "Governance improves coordination"
+      }
+    },
+    {
+      "id": "cld_8",
+      "from": "Water_Requirement",
+      "to": "Suitability",
+      "type": "causal",
+      "attributes": {
+        "polarity": "-",
+        "rationale": "Higher requirements reduce feasibility"
+      }
+    }
+  ],
+  "rawFactors": {
+    "Community Governance": 0.72,
+    "Suitability": 0.85,
+    "Water Requirement": 0.5,
+    "Grazing Intensity": 0.5,
+    "Management Capacity": 0.8,
+    "Economic Resilience": 180000.0,
+    "Biomass Stock": 1000.0,
+    "Fire Risk": 0.75,
+    "Grazable Area": 35.0,
+    "Governance Capacity": 2500000.0,
+    "Tourism Pressure": 23.0
+  }
+}
