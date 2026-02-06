@@ -1,5 +1,7 @@
 # Federated Rural OSDK Platform
 
+# IN DEVELOPMENT
+
 ## About
 A federated, model-driven platform that turns rural infrastructure, governance, and ecosystem projects into a unified, analyzable system using MBSE, GeoJSON, and automated downstream analytics.
 
