@@ -45,7 +45,7 @@ python gis/fetch_cadastro.py \
   --inspect-only
 
 # 4. Test the endpoint live in browser
-# https://ogcapi.dgterritorio.gov.pt/collections/CadastroPredial/items?f=json&bbox=-8.65,37.20,-8.45,37.38&limit=5
+# https://ogcapi.dgterritorio.gov.pt/collections/cadastro/items?f=json&bbox=-8.65,37.20,-8.45,37.38&limit=5
 ```
 
 ---
@@ -174,7 +174,7 @@ Add DGT as a live WFS layer in QGIS:
 1. Layer → Add Layer → Add WFS Layer
 2. URL: `https://ogcapi.dgterritorio.gov.pt` (OGC API mode)
 3. Enable feature paging → Connect
-4. Select `CadastroPredial` → Add
+4. Select `cadastro` → Add
 5. Set scale visibility (recommended: only show at 1:10,000 or larger)
 
 For Spain: `https://ovc.catastro.meh.es/INSPIRE/wfs/CadastralParcel`  
@@ -185,7 +185,7 @@ For France: `https://wxs.ign.fr/cadastrals/geoportail/wfs` (requires API key in 
 ## ArcGIS Online Integration
 
 1. Map → Add → Add Layer from Web
-2. WFS URL: `https://ogcapi.dgterritorio.gov.pt/collections/CadastroPredial/items?f=json&bbox=...`
+2. WFS URL: `https://ogcapi.dgterritorio.gov.pt/collections/cadastro/items?f=json&bbox=...`
 3. Or publish `monchique_cadastro_predial.geojson` as Feature Layer via `import_to_arcgis.py`
 
 ---

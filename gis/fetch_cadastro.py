@@ -50,7 +50,8 @@ def get_country_config(registry: dict, iso: str) -> dict:
 
 
 def fetch_ogc_api(base_url: str, collection: str, bbox: str,
-                  limit: int = PAGE_LIMIT, api_key: str = None) -> list:
+                  limit: int = PAGE_LIMIT, api_key: str = None,
+                  max_pages: int = None) -> list:
     """Fetch features from OGC API Features endpoint with pagination."""
     all_features = []
     offset = 0
@@ -83,6 +84,9 @@ def fetch_ogc_api(base_url: str, collection: str, bbox: str,
         matched = data.get("numberMatched", "?")
         print(f"  Got {len(features)} features (total matched: {matched})")
 
+        if max_pages is not None and page >= max_pages:
+            break
+
         links = data.get("links", [])
         next_link = next((l["href"] for l in links if l.get("rel") == "next"), None)
         if not next_link or len(features) < limit:
@@ -96,10 +100,12 @@ def fetch_ogc_api(base_url: str, collection: str, bbox: str,
 
 
 def fetch_wfs(base_url: str, layer: str, bbox: str,
-              crs: str = "EPSG:4326", limit: int = PAGE_LIMIT) -> list:
+              crs: str = "EPSG:4326", limit: int = PAGE_LIMIT,
+              max_pages: int = None) -> list:
     """Fetch features from WFS 2.0 endpoint."""
     all_features = []
     start_index = 0
+    page = 1
 
     while True:
         params = {
@@ -138,9 +144,13 @@ def fetch_wfs(base_url: str, layer: str, bbox: str,
         all_features.extend(features)
         print(f"  Got {len(features)} features")
 
+        if max_pages is not None and page >= max_pages:
+            break
+
         if len(features) < limit:
             break
         start_index += limit
+        page += 1
         time.sleep(0.3)
 
     return all_features
@@ -238,11 +248,23 @@ def main():
 
     features = []
     if "ogc_api" in src_type:
-        features = fetch_ogc_api(base_url, collection, args.bbox,
-                                  limit=args.limit, api_key=args.api_key)
+        features = fetch_ogc_api(
+            base_url,
+            collection,
+            args.bbox,
+            limit=args.limit,
+            api_key=args.api_key,
+            max_pages=1 if args.inspect_only else None,
+        )
     elif "wfs" in src_type:
-        features = fetch_wfs(base_url, collection, args.bbox,
-                              crs=crs, limit=args.limit)
+        features = fetch_wfs(
+            base_url,
+            collection,
+            args.bbox,
+            crs=crs,
+            limit=args.limit,
+            max_pages=1 if args.inspect_only else None,
+        )
     else:
         print(f"  Source type '{src_type}' requires manual download.")
         print(f"  See: {ps.get('docs', '')}")

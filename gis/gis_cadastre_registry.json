@@ -30,13 +30,13 @@
             "access": "open",
             "license": "CC-BY 4.0",
             "base_url": "https://ogcapi.dgterritorio.gov.pt",
-            "collection": "CadastroPredial",
+            "collection": "cadastro",
             "crs": "EPSG:4326",
             "coverage": "continental Portugal (vectorised from CGPR + CPE, integrated Nov 2023)",
             "attributes": ["NIC", "seccao", "artigo", "area", "natureza", "uso"],
             "attribution": "Carta Cadastral Digital - SNIC - DGT",
-            "notes": "Also available as WFS and ATOM download. Azores/Madeira under separate regional systems.",
-            "test_url": "https://ogcapi.dgterritorio.gov.pt/collections/CadastroPredial/items?f=json&bbox=-8.65,37.20,-8.45,37.38&limit=5",
+            "notes": "OGC API collection id verified live as 'cadastro'. Also available as WFS and ATOM download. Azores/Madeira under separate regional systems.",
+            "test_url": "https://ogcapi.dgterritorio.gov.pt/collections/cadastro/items?f=json&bbox=-8.65,37.20,-8.45,37.38&limit=5",
             "docs": "https://www.dgterritorio.gov.pt/dados-abertos"
           },
           "secondary_sources": [
