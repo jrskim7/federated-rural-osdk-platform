@@ -1,0 +1,908 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2026-04-18",
+    "maintainer": "JRBD / Conscious Circle / Federated OSDK Platform",
+    "description": "Global registry of cadastral and land parcel data sources for OSDK GIS workflows. Covers property boundaries, land use, and related spatial datasets. Used by fetch_cadastro.py to automate parcel data acquisition in any country.",
+    "license_note": "Data licenses vary per source. Always check before commercial use. CC-BY 4.0 sources are freely reusable with attribution.",
+    "total_entries": 195,
+    "ogc_api_pattern": "GET {base_url}/collections/{collection}/items?f=json&bbox={lon_min},{lat_min},{lon_max},{lat_max}&limit={limit}&offset={offset}",
+    "wfs_pattern": "GET {base_url}?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES={layer}&SRSNAME=EPSG:4326&BBOX={lon_min},{lat_min},{lon_max},{lat_max}&outputFormat=application/json"
+  },
+  "access_tiers": {
+    "open": "Free, no registration, machine-readable API",
+    "open_registration": "Free but requires account/API key registration",
+    "restricted": "Government or institutional access required",
+    "commercial": "Licensed commercial data",
+    "manual": "No API — manual download or digitising required",
+    "partial": "Some coverage open, remainder restricted"
+  },
+  "regions": {
+    "europe_western": {
+      "label": "Western Europe",
+      "countries": {
+        "PT": {
+          "name": "Portugal",
+          "inspire_node": "https://snig.dgterritorio.gov.pt",
+          "primary_source": {
+            "name": "DGT — Cadastro Predial (Continente)",
+            "type": "ogc_api",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://ogcapi.dgterritorio.gov.pt",
+            "collection": "CadastroPredial",
+            "crs": "EPSG:4326",
+            "coverage": "continental Portugal (vectorised from CGPR + CPE, integrated Nov 2023)",
+            "attributes": ["NIC", "seccao", "artigo", "area", "natureza", "uso"],
+            "attribution": "Carta Cadastral Digital - SNIC - DGT",
+            "notes": "Also available as WFS and ATOM download. Azores/Madeira under separate regional systems.",
+            "test_url": "https://ogcapi.dgterritorio.gov.pt/collections/CadastroPredial/items?f=json&bbox=-8.65,37.20,-8.45,37.38&limit=5",
+            "docs": "https://www.dgterritorio.gov.pt/dados-abertos"
+          },
+          "secondary_sources": [
+            {
+              "name": "BUPi — Balcao Unico do Predio",
+              "type": "wfs",
+              "access": "open",
+              "base_url": "https://ogcapi.dgterritorio.gov.pt",
+              "collection": "BUPi",
+              "notes": "Citizen-declared boundaries (less precise, useful for rural gaps)",
+              "docs": "https://bupi.gov.pt"
+            },
+            {
+              "name": "ICNF — Forest / Protected Areas",
+              "type": "wfs",
+              "access": "open",
+              "base_url": "https://geocatalogo.icnf.pt/geoserver/wfs",
+              "layer": "icnf:ap_caop2022",
+              "notes": "Protected areas, Natura 2000, fire risk zones",
+              "docs": "https://geocatalogo.icnf.pt"
+            },
+            {
+              "name": "NaturalGIS Portugal Catalogue",
+              "type": "wfs_mirror",
+              "access": "open",
+              "base_url": "https://www.naturalgis.pt/geocatalogo.html",
+              "notes": "Mirrors DGT and ICNF data in stable WFS/GPKG formats",
+              "docs": "https://www.naturalgis.pt/geocatalogo.html"
+            }
+          ],
+          "municipal_portals": {
+            "monchique": "https://monchique.city-platform.com/app/?a=planos#",
+            "note": "city-platform.com portals are JS SPAs consuming DGT data — use DGT API directly"
+          },
+          "bbox_country": "-9.52,36.84,-6.19,42.15"
+        },
+        "ES": {
+          "name": "Spain",
+          "inspire_node": "https://www.idee.es",
+          "primary_source": {
+            "name": "Catastro — DG del Catastro",
+            "type": "wfs",
+            "access": "open",
+            "license": "CC-BY 4.0 (non-commercial reuse free; commercial requires agreement)",
+            "base_url": "https://ovc.catastro.meh.es/INSPIRE/wfs/",
+            "layer": "CP.CadastralParcel",
+            "crs": "EPSG:4326",
+            "coverage": "All Spain (urban + rustico), very high quality",
+            "attributes": ["nationalCadastralReference", "areaValue", "beginLifespanVersion"],
+            "attribution": "Direccion General del Catastro",
+            "test_url": "https://ovc.catastro.meh.es/INSPIRE/wfs/CadastralParcel?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=CP.CadastralParcel&SRSNAME=EPSG:4326&BBOX=-3.72,40.40,-3.62,40.47",
+            "notes": "Also has REST API: catastro.meh.es/OVCServWeb. Excellent coverage including rural parcels.",
+            "docs": "https://www.catastro.meh.es/esp/sede.asp"
+          },
+          "bbox_country": "-9.39,35.95,3.33,43.75"
+        },
+        "FR": {
+          "name": "France",
+          "inspire_node": "https://www.geocatalogue.fr",
+          "primary_source": {
+            "name": "IGN — Plan cadastral informatise (PCI Vecteur)",
+            "type": "wfs",
+            "access": "open",
+            "license": "Licence Ouverte Etalab 2.0 (CC-BY equivalent)",
+            "base_url": "https://wxs.ign.fr/cadastrals/geoportail/wfs",
+            "layer": "CADASTRALPARCELS.PARCELLAIRE_EXPRESS:parcelle",
+            "crs": "EPSG:4326",
+            "coverage": "All France metropolitaine + DOM-TOM",
+            "attributes": ["numero", "section", "commune", "contenance", "arpente"],
+            "attribution": "IGN — Geoportail",
+            "test_url": "https://wxs.ign.fr/cadastrals/geoportail/wfs?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=CADASTRALPARCELS.PARCELLAIRE_EXPRESS:parcelle&SRSNAME=EPSG:4326&BBOX=2.34,48.85,2.36,48.86&outputFormat=application/json&count=5",
+            "notes": "Requires free IGN API key (Geoportail). Also available as bulk GPKG download per departement.",
+            "docs": "https://geoservices.ign.fr/documentation/services/api-et-services-ogc/wfs-ogc"
+          },
+          "secondary_sources": [
+            {
+              "name": "data.gouv.fr — PCI Vecteur bulk download",
+              "type": "bulk_download",
+              "access": "open",
+              "url": "https://cadastre.data.gouv.fr/datasets/cadastre",
+              "format": "GeoJSON / Shapefile per commune",
+              "notes": "Best for large-area downloads. Updated annually."
+            }
+          ],
+          "bbox_country": "-5.14,41.33,9.56,51.09"
+        },
+        "DE": {
+          "name": "Germany",
+          "inspire_node": "https://www.geoportal.de",
+          "primary_source": {
+            "name": "ALKIS — Amtliches Liegenschaftskatasterinformationssystem",
+            "type": "wfs",
+            "access": "partial",
+            "license": "Varies by Bundesland — some open, most require licence",
+            "base_url": "Varies by state (Bundesland)",
+            "layer": "adv:AX_Flurstueck",
+            "crs": "EPSG:25832 (ETRS89 UTM32N)",
+            "coverage": "All Germany, managed per Bundesland",
+            "notes": "No single national endpoint. Each of 16 states has own WFS. Bayern and NRW are most accessible.",
+            "state_endpoints": {
+              "Bayern": "https://geoservices.bayern.de/wfs/ogc/bayernatlas?",
+              "NRW": "https://www.wfs.nrw.de/geobasis/wfs_nw_alkis_vereinfacht?",
+              "Berlin": "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis_parcel?"
+            },
+            "docs": "https://www.adv-online.de/AdV-Produkte/Standards-und-Produktblaetter/ALKIS/"
+          },
+          "bbox_country": "5.87,47.27,15.04,55.06"
+        },
+        "IT": {
+          "name": "Italy",
+          "inspire_node": "https://geodati.gov.it",
+          "primary_source": {
+            "name": "AdE — Agenzia delle Entrate Catasto",
+            "type": "wms_only",
+            "access": "restricted",
+            "license": "Government use",
+            "base_url": "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01_cp",
+            "notes": "WMS (raster) is public; WFS (vector) requires institutional access.",
+            "docs": "https://www.agenziaentrate.gov.it"
+          },
+          "secondary_sources": [
+            {
+              "name": "OpenMapTiles + OSM building layer",
+              "type": "overpass_api",
+              "access": "open",
+              "notes": "Partial land use coverage via OSM. Use as fallback."
+            }
+          ],
+          "bbox_country": "6.63,35.49,18.52,47.09"
+        },
+        "GB": {
+          "name": "United Kingdom",
+          "inspire_node": "https://inspire.ec.europa.eu",
+          "primary_source": {
+            "name": "HM Land Registry — INSPIRE Index Polygons",
+            "type": "wfs",
+            "access": "open",
+            "license": "OGL v3.0",
+            "base_url": "https://inspire.landregistry.gov.uk/atom/",
+            "wfs_url": "https://inspire.landregistry.gov.uk/atom/inspire/xml",
+            "coverage": "England and Wales registered land only (~85% of titles)",
+            "attributes": ["INSPIREID", "TITLE_NO", "POLY_ID"],
+            "notes": "Scotland: Registers of Scotland (ros.gov.uk). NI: Land & Property Services. HMLR polygons are title boundaries, not parcels.",
+            "docs": "https://use-land-property-data.service.gov.uk/datasets/inspire"
+          },
+          "bbox_country": "-8.18,49.96,1.77,60.84"
+        },
+        "NL": {
+          "name": "Netherlands",
+          "inspire_node": "https://www.nationaalgeoregister.nl",
+          "primary_source": {
+            "name": "Kadaster — BRK (Basis Registratie Kadaster)",
+            "type": "ogc_api",
+            "access": "open_registration",
+            "license": "CC-BY 4.0 (open datasets); some layers require API key",
+            "base_url": "https://api.pdok.nl/bzk/locatieserver/search/v3_1",
+            "cadastral_wfs": "https://geodata.nationaalgeoregister.nl/kadastralekaart/wfs/v4_0",
+            "layer": "kadastralekaart:Perceel",
+            "notes": "PDOK platform provides unified access. API key required for some layers.",
+            "docs": "https://www.kadaster.nl"
+          },
+          "bbox_country": "3.36,50.75,7.23,53.56"
+        },
+        "BE": {
+          "name": "Belgium",
+          "inspire_node": "https://www.geo.be",
+          "primary_source": {
+            "name": "SPF Finances — CadGIS",
+            "type": "wms",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://ccff02.minfin.fgov.be/geoservices/arcgis/rest/services/PUBLIC/CadGIS_Viewer/MapServer",
+            "notes": "WMS public; WFS/vector download requires registration.",
+            "docs": "https://finances.belgium.be"
+          },
+          "bbox_country": "2.55,49.50,6.40,51.50"
+        },
+        "AT": {
+          "name": "Austria",
+          "inspire_node": "https://www.data.gv.at",
+          "primary_source": {
+            "name": "BEV — Bundesamt fuer Eich- und Vermessungswesen (DKM)",
+            "type": "wfs",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://data.bev.gv.at/geoserver/ows",
+            "layer": "KAT:DKM_GST",
+            "notes": "Digitale Katastralmappe (DKM). Excellent coverage, frequently updated.",
+            "docs": "https://www.bev.gv.at"
+          },
+          "bbox_country": "9.53,46.37,17.16,48.98"
+        },
+        "CH": {
+          "name": "Switzerland",
+          "inspire_node": "https://www.geocat.ch",
+          "primary_source": {
+            "name": "Swisstopo — Amtliche Vermessung (AV)",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open Government Data",
+            "base_url": "https://wms.geo.admin.ch/",
+            "wfs_base": "https://wfs.geo.admin.ch/",
+            "layer": "ch.swisstopo-vd.amtliche-vermessung",
+            "notes": "Managed by cantons; national view via Swisstopo. Excellent precision (~2cm).",
+            "docs": "https://www.swisstopo.admin.ch/en/amtliche-vermessung"
+          },
+          "bbox_country": "5.96,45.82,10.49,47.81"
+        },
+        "SE": {
+          "name": "Sweden",
+          "inspire_node": "https://www.geodata.se",
+          "primary_source": {
+            "name": "Lantmateriet — Fastighetskartan",
+            "type": "wfs",
+            "access": "open_registration",
+            "license": "CC0 for basic; Lantmateriet licence for detailed",
+            "api_url": "https://api.lantmateriet.se/distribution/produkter/fastighetsindelning/v2.1/",
+            "notes": "API key required. Good open data via Geodata.se portal.",
+            "docs": "https://www.lantmateriet.se"
+          },
+          "bbox_country": "11.11,55.34,24.16,69.06"
+        },
+        "NO": {
+          "name": "Norway",
+          "inspire_node": "https://kartkatalog.geonorge.no",
+          "primary_source": {
+            "name": "Kartverket — Matrikkelen",
+            "type": "wfs",
+            "access": "open",
+            "license": "NLOD 2.0",
+            "base_url": "https://wfs.geonorge.no/skwms1/wfs.eiendomskart",
+            "layer": "eiendomskart:Teig",
+            "notes": "Matrikkelen is the national cadastre. Good API and bulk download.",
+            "docs": "https://www.kartverket.no/eiendom/eiendomsgrenser"
+          },
+          "bbox_country": "4.09,57.97,31.29,71.19"
+        },
+        "DK": {
+          "name": "Denmark",
+          "inspire_node": "https://datafordeler.dk",
+          "primary_source": {
+            "name": "Datafordeleren — Matriklen",
+            "type": "wfs",
+            "access": "open_registration",
+            "license": "Free with registration",
+            "base_url": "https://services.datafordeler.dk/MatrikelGaeldendeOgForeloebigWFS/Matrikel_GaeldendeOgForeloebig/1/WFS",
+            "layer": "MatrikelGaeldendeOgForeloebigWFS:Jordstykke",
+            "notes": "Username/password required (free). Excellent coverage.",
+            "docs": "https://datafordeler.dk/dataoversigt/matriklen/"
+          },
+          "bbox_country": "8.07,54.56,15.20,57.75"
+        },
+        "FI": {
+          "name": "Finland",
+          "inspire_node": "https://www.paikkatietoikkuna.fi",
+          "primary_source": {
+            "name": "Maanmittauslaitos — Kiinteistorekisterikartta",
+            "type": "wfs",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://avoin-paikkatieto.maanmittauslaitos.fi/kiinteisto-avoin/simple/wfs/v3",
+            "layer": "kiinteistotunnus",
+            "api_key_required": true,
+            "notes": "API key free from maanmittauslaitos.fi. Very high quality cadastral data.",
+            "docs": "https://www.maanmittauslaitos.fi"
+          },
+          "bbox_country": "20.57,59.81,31.59,70.09"
+        },
+        "IE": {
+          "name": "Ireland",
+          "inspire_node": "https://data.gov.ie",
+          "primary_source": {
+            "name": "Tailte Eireann — Land Registry / Ordnance Survey",
+            "type": "wfs",
+            "access": "partial",
+            "license": "PSI Licence",
+            "base_url": "https://spatial.dcenr.gov.ie/ArcGIS/services",
+            "notes": "Folio boundaries (registered land) available. Full cadastre requires commercial licence.",
+            "open_alternative": {
+              "name": "OSi (Ordnance Survey Ireland) Open Data",
+              "url": "https://data.gov.ie/dataset?organization=ordnance-survey-ireland"
+            },
+            "docs": "https://tailte.ie/en/registration/land-registry/"
+          },
+          "bbox_country": "-10.47,51.45,-6.01,55.38"
+        },
+        "PL": {
+          "name": "Poland",
+          "inspire_node": "https://www.geoportal.gov.pl",
+          "primary_source": {
+            "name": "Geoportal — EGiB (Ewidencja Gruntow i Budynkow)",
+            "type": "wfs",
+            "access": "open",
+            "license": "Public Domain",
+            "base_url": "https://integracja.gugik.gov.pl/cgi-bin/KrajowaIntegracjaEwidencjiGruntow",
+            "layer": "dzialki",
+            "notes": "National land registry. GUGIK also provides bulk GPKG downloads per powiat.",
+            "docs": "https://www.geoportal.gov.pl"
+          },
+          "bbox_country": "14.12,49.00,24.15,54.84"
+        },
+        "CZ": {
+          "name": "Czech Republic",
+          "inspire_node": "https://geoportal.cuzk.cz",
+          "primary_source": {
+            "name": "CUZK — Katastr nemovitosti",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open data — free",
+            "base_url": "https://services.cuzk.cz/wfs/inspire-cp-wfs.asp",
+            "layer": "CP:CadastralParcel",
+            "notes": "INSPIRE-compliant WFS. Also bulk download available.",
+            "docs": "https://geoportal.cuzk.cz"
+          },
+          "bbox_country": "12.09,48.55,18.86,51.06"
+        },
+        "GR": {
+          "name": "Greece",
+          "inspire_node": "https://geodata.gov.gr",
+          "primary_source": {
+            "name": "Hellenic Cadastre — Ktimatologio",
+            "type": "wms_only",
+            "access": "partial",
+            "license": "Government use; commercial restricted",
+            "base_url": "https://gis.ktimatologio.gr/arcgis/rest/services/Cadastre/Cadastre/MapServer",
+            "notes": "Ongoing cadastral programme (not complete). WMS public; vector requires licence.",
+            "docs": "https://www.ktimatologio.gr"
+          },
+          "bbox_country": "20.15,34.92,26.60,41.75"
+        }
+      }
+    },
+    "americas_north": {
+      "label": "North America",
+      "countries": {
+        "US": {
+          "name": "United States",
+          "notes": "Cadastral data is managed at county level (3000+ counties). No single national WFS.",
+          "primary_source": {
+            "name": "USGS — National Cadastral Dataset (PLSS)",
+            "type": "wfs",
+            "access": "open",
+            "license": "Public Domain",
+            "base_url": "https://geoplatform.gov/metadata/4a81e33a-50bb-4fe3-b7d3-0c38f1c86c5e",
+            "notes": "PLSS (Public Land Survey System) only for western states. For parcel-level data use county portals or commercial sources.",
+            "docs": "https://nationalcadastre.gov"
+          },
+          "secondary_sources": [
+            {
+              "name": "RegridData (Loveland) — National Parcels",
+              "type": "api",
+              "access": "commercial",
+              "url": "https://regrid.com/api",
+              "notes": "Best national parcel API. Free tier available (limited). 155M+ parcels."
+            },
+            {
+              "name": "State-level open portals",
+              "examples": {
+                "California": "https://gis.data.ca.gov",
+                "Texas": "https://tnris.org/data-catalog",
+                "New York": "https://gis.ny.gov/parcels",
+                "Florida": "https://geodata.dep.state.fl.us"
+              }
+            }
+          ],
+          "bbox_country": "-124.73,24.94,-66.97,49.38"
+        },
+        "CA": {
+          "name": "Canada",
+          "inspire_node": "https://open.canada.ca",
+          "primary_source": {
+            "name": "NRCan — Canada Lands Surveys",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open Government Licence Canada",
+            "base_url": "https://geogratis.gc.ca/arcgis/rest/services/FedLands/MapServer",
+            "notes": "Federal lands only. Provincial cadastres managed separately.",
+            "provincial_examples": {
+              "BC": "https://openmaps.gov.bc.ca/geo/pub/WHSE_CADASTRE.PMBC_PARCEL_FABRIC_POLY_SVW/ows",
+              "Ontario": "https://www.ontario.ca/page/land-information-ontario",
+              "Quebec": "https://www.donneesquebec.ca/recherche/dataset/cadastre"
+            },
+            "docs": "https://www.nrcan.gc.ca"
+          },
+          "bbox_country": "-141.00,41.67,-52.65,83.12"
+        },
+        "MX": {
+          "name": "Mexico",
+          "inspire_node": "https://www.inegi.org.mx",
+          "primary_source": {
+            "name": "INEGI — Marco Geoestadistico / SIEG",
+            "type": "wfs",
+            "access": "open",
+            "license": "Libre uso INEGI",
+            "base_url": "https://gaia.inegi.org.mx/wms/geo",
+            "notes": "Statistical areas (AGEBs) rather than true cadastral parcels. RAN holds ejido boundaries.",
+            "ejido_source": {
+              "name": "RAN — Registro Agrario Nacional",
+              "url": "https://datos.ran.gob.mx",
+              "notes": "Ejido and comunal land boundaries — critical for rural Mexico"
+            },
+            "docs": "https://www.inegi.org.mx"
+          },
+          "bbox_country": "-118.37,14.53,-86.71,32.72"
+        }
+      }
+    },
+    "americas_south": {
+      "label": "South America",
+      "countries": {
+        "BR": {
+          "name": "Brazil",
+          "inspire_node": "https://inde.gov.br",
+          "primary_source": {
+            "name": "INCRA — SIGEF (Sistema de Gestao Fundiaria)",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open Data (Dados Abertos)",
+            "base_url": "https://certificacao.incra.gov.br/csv_shp/export_shp.py",
+            "api_url": "https://sigef.incra.gov.br/geo/parcela/",
+            "notes": "SIGEF for rural parcels. CAR (Cadastro Ambiental Rural) adds environmental layer.",
+            "car_source": {
+              "name": "CAR — Cadastro Ambiental Rural",
+              "url": "https://www.car.gov.br/publico/imoveis/index",
+              "notes": "Environmental rural registry — downloadable as shapefile per state. Essential for Amazon/rural Brazil."
+            },
+            "docs": "https://sigef.incra.gov.br"
+          },
+          "bbox_country": "-73.98,-33.75,-28.85,5.26"
+        },
+        "AR": {
+          "name": "Argentina",
+          "inspire_node": "https://datos.gob.ar",
+          "primary_source": {
+            "name": "IGN — Instituto Geografico Nacional",
+            "type": "wfs",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://wms.ign.gob.ar/geoserver/ows",
+            "layer": "ign:parcelas",
+            "notes": "National cadastre at provincial level. IGN provides WMS/WFS for administrative boundaries.",
+            "docs": "https://www.ign.gob.ar"
+          },
+          "bbox_country": "-73.56,-55.06,-53.66,-21.83"
+        },
+        "CO": {
+          "name": "Colombia",
+          "inspire_node": "https://www.datos.gov.co",
+          "primary_source": {
+            "name": "IGAC — Catastro Nacional",
+            "type": "wfs",
+            "access": "open_registration",
+            "license": "Datos Abiertos Colombia",
+            "base_url": "https://geoportal.igac.gov.co/geoserver/ows",
+            "layer": "igac:catastro_predial",
+            "notes": "IGAC manages national cadastre. Free access with registration. Rural parcels prioritised under land reform.",
+            "docs": "https://geoportal.igac.gov.co"
+          },
+          "bbox_country": "-81.72,-4.23,-66.87,13.39"
+        },
+        "CL": {
+          "name": "Chile",
+          "inspire_node": "https://www.ide.cl",
+          "primary_source": {
+            "name": "SII — Servicio de Impuestos Internos (Catastro)",
+            "type": "wms",
+            "access": "restricted",
+            "license": "Government internal",
+            "notes": "SII WMS is public for visualisation. Vector parcels require formal request.",
+            "open_alternative": {
+              "name": "IDE Chile — WFS layers",
+              "url": "https://www.ide.cl/index.php/servicios-web"
+            },
+            "docs": "https://www.sii.cl"
+          },
+          "bbox_country": "-75.64,-55.90,-66.96,-17.50"
+        },
+        "PE": {
+          "name": "Peru",
+          "inspire_node": "https://www.geoidep.gob.pe",
+          "primary_source": {
+            "name": "COFOPRI — Catastro Rural",
+            "type": "wms",
+            "access": "restricted",
+            "notes": "COFOPRI manages urban formalisation; SERFOR for forest land. No consolidated open WFS.",
+            "partial_open": "https://geoidep.gob.pe/catalogo-de-metadatos",
+            "docs": "https://www.cofopri.gob.pe"
+          },
+          "bbox_country": "-81.33,-18.35,-68.67,-0.04"
+        },
+        "EC": {
+          "name": "Ecuador",
+          "inspire_node": "https://www.geoportaligm.gob.ec",
+          "primary_source": {
+            "name": "IGM Ecuador + SNI",
+            "type": "wfs",
+            "access": "open_registration",
+            "base_url": "https://sni.gob.ec/geo/rest/services",
+            "notes": "SNI (Sistema Nacional de Informacion) provides WMS/WFS for municipalities.",
+            "docs": "https://www.geoportaligm.gob.ec"
+          },
+          "bbox_country": "-80.96,-5.01,-75.19,1.68"
+        }
+      }
+    },
+    "africa": {
+      "label": "Africa",
+      "notes": "African cadastral data is fragmented. RCMRD provides continental coverage for ESA region.",
+      "countries": {
+        "ZA": {
+          "name": "South Africa",
+          "inspire_node": "https://ngi.dalrrd.gov.za",
+          "primary_source": {
+            "name": "Chief Surveyor-General — Cadastral Data",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open Government Data",
+            "base_url": "https://csg.ngi.gov.za/Registry/CSG_Cadastral_Service",
+            "notes": "Best cadastral data in sub-Saharan Africa. WFS available for registered parcels.",
+            "docs": "https://ngi.dalrrd.gov.za"
+          },
+          "bbox_country": "16.46,-34.82,32.89,-22.13"
+        },
+        "KE": {
+          "name": "Kenya",
+          "inspire_node": "https://www.kilimodata.go.ke",
+          "primary_source": {
+            "name": "Survey of Kenya — National Land Information Management System",
+            "type": "wms_only",
+            "access": "restricted",
+            "notes": "NLIMS under development. No public WFS. Use World Bank Land Portal or RCMRD.",
+            "alternatives": [
+              {"name": "RCMRD — Regional data", "url": "https://geoportal.rcmrd.org"},
+              {"name": "OpenAfrica", "url": "https://africaopendata.org"}
+            ],
+            "docs": "https://www.lands.go.ke"
+          },
+          "bbox_country": "33.91,-4.67,41.90,4.62"
+        },
+        "NG": {
+          "name": "Nigeria",
+          "primary_source": {
+            "name": "OSGOF — Office of the Surveyor-General of the Federation",
+            "type": "manual",
+            "access": "restricted",
+            "notes": "No national open WFS. Use NASRDA for satellite imagery.",
+            "alternatives": [
+              {"name": "NASRDA satellite data", "url": "https://nasrda.gov.ng"},
+              {"name": "OpenStreetMap Nigeria", "url": "https://www.openstreetmap.org"}
+            ]
+          },
+          "bbox_country": "2.69,4.27,14.69,13.87"
+        },
+        "ET": {
+          "name": "Ethiopia",
+          "primary_source": {
+            "name": "Ethiopian Mapping Agency / WLRC",
+            "type": "manual",
+            "access": "restricted",
+            "notes": "Rural land held communally; certified by Regional Land Administration. World Bank data available on request.",
+            "alternatives": [{"name": "RLAUA / SIDA Ethiopia Land Data", "url": "https://www.esi.gov.et"}]
+          },
+          "bbox_country": "32.99,3.40,47.99,14.89"
+        },
+        "MA": {
+          "name": "Morocco",
+          "primary_source": {
+            "name": "ANCFCC — Agence Nationale de la Conservation Fonciere",
+            "type": "wms_only",
+            "access": "restricted",
+            "notes": "Land registry (Livre Foncier) not publicly accessible.",
+            "open_alternative": {"name": "ONEM / Haut Commissariat au Plan", "url": "https://www.hcp.ma"}
+          },
+          "bbox_country": "-13.17,27.67,-1.12,35.92"
+        },
+        "GH": {
+          "name": "Ghana",
+          "primary_source": {
+            "name": "Lands Commission — Ghana",
+            "type": "manual",
+            "access": "restricted",
+            "notes": "Land titling ongoing under GHALA project. No public API.",
+            "open_alternative": {"name": "Ghana Open Data Initiative", "url": "https://data.gov.gh"}
+          },
+          "bbox_country": "-3.26,4.71,1.19,11.18"
+        }
+      }
+    },
+    "asia_east": {
+      "label": "East Asia",
+      "countries": {
+        "JP": {
+          "name": "Japan",
+          "inspire_node": "https://www.geospatial.jp",
+          "primary_source": {
+            "name": "GSI — National Spatial Data Infrastructure",
+            "type": "wms_wfs",
+            "access": "open",
+            "license": "CC-BY",
+            "base_url": "https://cyberjapandata.gsi.go.jp",
+            "notes": "GSI provides land parcel WMS. Vector cadastre (Chiban) via Legal Affairs Bureau — not fully open.",
+            "docs": "https://www.gsi.go.jp/ENGLISH/page_e30031.html"
+          },
+          "bbox_country": "122.93,24.21,153.98,45.52"
+        },
+        "CN": {
+          "name": "China",
+          "primary_source": {
+            "name": "NASMG — National Administration of Surveying, Mapping and Geoinformation",
+            "type": "restricted",
+            "access": "restricted",
+            "notes": "Cadastral data classified. Use Tianditu (tianditu.gov.cn) for base maps. No public WFS for parcels.",
+            "open_alternative": {
+              "name": "Tianditu WMS",
+              "url": "https://t0.tianditu.gov.cn",
+              "notes": "Requires API key (free registration). Administrative boundaries only."
+            }
+          },
+          "bbox_country": "73.50,18.16,135.08,53.56"
+        },
+        "KR": {
+          "name": "South Korea",
+          "primary_source": {
+            "name": "LX Korea — Parcel Map Service",
+            "type": "wms_wfs",
+            "access": "open_registration",
+            "license": "Open Data",
+            "base_url": "https://map.ngii.go.kr",
+            "notes": "API key required (free).",
+            "docs": "https://www.lx.or.kr/eng/main/main.do"
+          },
+          "bbox_country": "125.07,33.10,129.60,38.62"
+        }
+      }
+    },
+    "asia_south": {
+      "label": "South & Southeast Asia",
+      "countries": {
+        "IN": {
+          "name": "India",
+          "inspire_node": "https://www.incois.gov.in",
+          "primary_source": {
+            "name": "DigiLocker / Bhoomi / Dharani (state-wise)",
+            "type": "manual",
+            "access": "partial",
+            "notes": "Land records are state-managed. No national open WFS. DILRMP project digitalising cadastre.",
+            "state_examples": {
+              "Karnataka": "https://landrecords.karnataka.gov.in",
+              "AP": "https://dharani.ap.gov.in",
+              "Maharashtra": "https://bhulekh.mahabhumi.gov.in"
+            },
+            "open_national": {
+              "name": "Bharat Maps",
+              "url": "https://bharatmaps.gov.in",
+              "notes": "Consolidates state layers under 2022 National Geospatial Policy"
+            },
+            "docs": "https://dolr.gov.in"
+          },
+          "bbox_country": "68.18,8.07,97.40,37.10"
+        },
+        "ID": {
+          "name": "Indonesia",
+          "primary_source": {
+            "name": "BPN — Badan Pertanahan Nasional",
+            "type": "wms_only",
+            "access": "restricted",
+            "notes": "GeoKKP system under development. OSM coverage good in Java.",
+            "open_alternative": {
+              "name": "BIG Geoportal",
+              "url": "https://tanahair.indonesia.go.id/portal-web",
+              "notes": "National geospatial agency — administrative + thematic layers"
+            }
+          },
+          "bbox_country": "95.01,-10.36,141.02,5.90"
+        },
+        "PH": {
+          "name": "Philippines",
+          "primary_source": {
+            "name": "NAMRIA + LRA",
+            "type": "wms_only",
+            "access": "partial",
+            "license": "Open Data Philippines",
+            "base_url": "https://www.namria.gov.ph",
+            "notes": "Land Registration Authority for titles. Partial open access.",
+            "docs": "https://www.namria.gov.ph/downloads.aspx"
+          },
+          "bbox_country": "116.93,4.59,126.60,20.40"
+        },
+        "VN": {
+          "name": "Vietnam",
+          "primary_source": {
+            "name": "MONRE — Ministry of Natural Resources",
+            "type": "restricted",
+            "access": "restricted",
+            "notes": "Land Information System (VLIS) not publicly accessible.",
+            "open_alternative": {
+              "name": "Open Development Mekong",
+              "url": "https://vietnam.opendevelopmentmekong.net",
+              "notes": "Land concessions, forest cover, social data"
+            }
+          },
+          "bbox_country": "102.17,8.56,109.46,23.39"
+        }
+      }
+    },
+    "middle_east": {
+      "label": "Middle East & North Africa",
+      "countries": {
+        "TR": {
+          "name": "Turkey",
+          "primary_source": {
+            "name": "TKGM — General Directorate of Land Registry and Cadastre",
+            "type": "wms_wfs",
+            "access": "open_registration",
+            "license": "Open Data (TKGM)",
+            "base_url": "https://cbsserver.tkgm.gov.tr/geoserver/ows",
+            "notes": "PARSEL layer available. Registration required. Good quality urban + rural cadastre.",
+            "docs": "https://www.tkgm.gov.tr/en"
+          },
+          "bbox_country": "26.04,35.82,44.80,42.14"
+        },
+        "IL": {
+          "name": "Israel",
+          "primary_source": {
+            "name": "Israel Mapping Center — Cadastre",
+            "type": "wfs",
+            "access": "open",
+            "license": "Open data",
+            "base_url": "https://ims.data.gov.il/dataset/cadastre",
+            "notes": "Good open access. Disputed territories require OCHA humanitarian GIS data.",
+            "docs": "https://www.data.gov.il"
+          },
+          "bbox_country": "34.27,29.50,35.90,33.33"
+        },
+        "EG": {
+          "name": "Egypt",
+          "primary_source": {
+            "name": "CAPMAS — Egyptian Survey Authority",
+            "type": "manual",
+            "access": "restricted",
+            "notes": "No public WFS. Use CAPMAS statistics + OSM for urban.",
+            "open_alternative": {"name": "Open Data Egypt", "url": "https://data.gov.eg"}
+          },
+          "bbox_country": "24.70,22.00,36.90,31.67"
+        }
+      }
+    },
+    "oceania": {
+      "label": "Oceania",
+      "countries": {
+        "AU": {
+          "name": "Australia",
+          "inspire_node": "https://www.ga.gov.au",
+          "primary_source": {
+            "name": "PSMA — Geoscape / Cadastral Fabric",
+            "type": "ogc_api",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://geoscape.com.au/data/cadastre/",
+            "notes": "National Cadastral Database (DCDB) managed by states, consolidated by PSMA/Geoscape.",
+            "state_portals": {
+              "NSW": "https://portal.spatial.nsw.gov.au/server/rest/services/NSW_Cadastre_Geodatabase/MapServer",
+              "VIC": "https://www.land.vic.gov.au/maps-and-spatial/spatial-data/vicmap-catalogue/vicmap-property",
+              "QLD": "https://qldspatial.information.qld.gov.au/catalogue/",
+              "WA": "https://www.landgate.wa.gov.au/products-and-services/open-data"
+            },
+            "docs": "https://geoscape.com.au"
+          },
+          "bbox_country": "113.34,-43.63,153.57,-10.67"
+        },
+        "NZ": {
+          "name": "New Zealand",
+          "primary_source": {
+            "name": "LINZ — Land Information New Zealand",
+            "type": "ogc_api",
+            "access": "open",
+            "license": "CC-BY 4.0",
+            "base_url": "https://data.linz.govt.nz/services/query/v1/vector.json",
+            "wfs_url": "https://data.linz.govt.nz/services;key={API_KEY}/wfs",
+            "layer": "layer-50804",
+            "notes": "Excellent open cadastre via LINZ Data Service. Free API key.",
+            "test_url": "https://data.linz.govt.nz/layer/50804-nz-primary-parcels/",
+            "docs": "https://www.linz.govt.nz/products-services/data/types-linz-data/cadastral-data"
+          },
+          "bbox_country": "165.87,-47.29,178.56,-34.42"
+        }
+      }
+    },
+    "global_fallbacks": {
+      "label": "Global Fallback Sources",
+      "description": "When national cadastre is unavailable, these global sources provide partial coverage",
+      "sources": [
+        {
+          "name": "OpenStreetMap — Overpass API",
+          "type": "overpass_api",
+          "access": "open",
+          "license": "ODbL",
+          "endpoint": "https://overpass-api.de/api/interpreter",
+          "query_example": "[out:json];(way[landuse]({{bbox}});relation[landuse]({{bbox}}));out geom;",
+          "notes": "Best for urban land use. Rural parcel coverage is poor in most countries.",
+          "docs": "https://overpass-api.de"
+        },
+        {
+          "name": "World Bank — Land Portal",
+          "type": "bulk_download",
+          "access": "open",
+          "url": "https://landportal.org/book/datasets",
+          "notes": "Country-level land tenure datasets, especially useful for Africa and Asia"
+        },
+        {
+          "name": "FAO — GAUL (Administrative Layers)",
+          "type": "bulk_download",
+          "access": "open",
+          "url": "https://www.fao.org/geonetwork/srv/en/metadata.show?id=12691",
+          "notes": "Administrative boundaries at all levels globally. Not cadastral but useful for clipping."
+        },
+        {
+          "name": "GADM — Global Administrative Areas",
+          "type": "bulk_download",
+          "access": "open_registration",
+          "url": "https://gadm.org/download_country.html",
+          "notes": "Country to region to municipality boundaries. Free for non-commercial."
+        },
+        {
+          "name": "Microsoft Planetary Computer — Global Land Cover",
+          "type": "ogc_api",
+          "access": "open",
+          "url": "https://planetarycomputer.microsoft.com/dataset/io-lulc-annual-v02",
+          "notes": "Annual global land use / land cover at 10m resolution. Essential context layer."
+        },
+        {
+          "name": "ESA WorldCover 2021",
+          "type": "wms",
+          "access": "open",
+          "url": "https://viewer.esa-worldcover.org/worldcover/",
+          "notes": "10m global land cover. Free download or WMS. Excellent for rural land use baseline."
+        },
+        {
+          "name": "Global Forest Watch — Forest / Land",
+          "type": "ogc_api",
+          "access": "open",
+          "url": "https://data.globalforestwatch.org",
+          "notes": "Deforestation, forest cover, land concessions. Especially Africa, Southeast Asia, Amazon."
+        },
+        {
+          "name": "RCMRD — East/Southern Africa Regional GIS",
+          "type": "wms_wfs",
+          "access": "open_registration",
+          "url": "https://geoportal.rcmrd.org",
+          "notes": "20-country East/Southern Africa coverage. Best regional source for that area."
+        },
+        {
+          "name": "UN OCHA HDX — Humanitarian Data Exchange",
+          "type": "bulk_download",
+          "access": "open",
+          "url": "https://data.humdata.org",
+          "notes": "Best source for conflict/fragile states. Admin boundaries, population, land concessions."
+        },
+        {
+          "name": "INSPIRE Geoportal — EU-wide",
+          "type": "catalogue",
+          "access": "open",
+          "url": "https://inspire-geoportal.ec.europa.eu",
+          "notes": "Catalogue of all EU member state INSPIRE-compliant WFS/WMS services. Use to discover endpoints."
+        }
+      ]
+    }
+  }
+}
