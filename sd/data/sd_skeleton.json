@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "source_cld": "Monchique QSEM CLD",
+    "generated": "2026-02-06T00:22:02.964635Z",
+    "note": "Auto-generated SD skeleton from QSEM CLD. Review stock/auxiliary classification before building equations."
+  },
+  "stocks": [
+    {
+      "id": "Management_Capacity",
+      "label": "Management Capacity",
+      "initial_value": 0.8,
+      "unit": "tbd",
+      "note": "Derived as stock: accumulating node with qualifying label"
+    },
+    {
+      "id": "Biomass_Stock",
+      "label": "Biomass Stock",
+      "initial_value": 1000.0,
+      "unit": "tbd",
+      "note": "Derived as stock: accumulating node with qualifying label"
+    },
+    {
+      "id": "Fire_Risk",
+      "label": "Fire Risk",
+      "initial_value": 0.75,
+      "unit": "tbd",
+      "note": "Derived as stock: accumulating node with qualifying label"
+    }
+  ],
+  "flows": [
+    {
+      "id": "cld_0",
+      "source": "Grazing_Intensity",
+      "target": "Biomass_Stock",
+      "polarity": "-",
+      "rationale": "Grazing reduces biomass",
+      "note": "Flow decreases Biomass_Stock"
+    },
+    {
+      "id": "cld_1",
+      "source": "Biomass_Stock",
+      "target": "Fire_Risk",
+      "polarity": "+",
+      "rationale": "More biomass increases fuel load",
+      "note": "Flow increases Fire_Risk"
+    },
+    {
+      "id": "cld_2",
+      "source": "Governance_Capacity",
+      "target": "Fire_Risk",
+      "polarity": "-",
+      "rationale": "Better governance reduces fire risk",
+      "note": "Flow decreases Fire_Risk"
+    },
+    {
+      "id": "cld_3",
+      "source": "Management_Capacity",
+      "target": "Fire_Risk",
+      "polarity": "-",
+      "rationale": "Improved management reduces risk",
+      "note": "Flow decreases Fire_Risk"
+    },
+    {
+      "id": "cld_4",
+      "source": "Tourism_Pressure",
+      "target": "Fire_Risk",
+      "polarity": "+",
+      "rationale": "Higher tourism pressure elevates risk",
+      "note": "Flow increases Fire_Risk"
+    },
+    {
+      "id": "cld_5",
+      "source": "Fire_Risk",
+      "target": "Suitability",
+      "polarity": "-",
+      "rationale": "Risk lowers project suitability",
+      "note": "Flow decreases Suitability"
+    },
+    {
+      "id": "cld_6",
+      "source": "Economic_Resilience",
+      "target": "Management_Capacity",
+      "polarity": "+",
+      "rationale": "Revenue supports management",
+      "note": "Flow increases Management_Capacity"
+    },
+    {
+      "id": "cld_7",
+      "source": "Community_Governance",
+      "target": "Management_Capacity",
+      "polarity": "+",
+      "rationale": "Governance improves coordination",
+      "note": "Flow increases Management_Capacity"
+    },
+    {
+      "id": "cld_8",
+      "source": "Water_Requirement",
+      "target": "Suitability",
+      "polarity": "-",
+      "rationale": "Higher requirements reduce feasibility",
+      "note": "Flow decreases Suitability"
+    }
+  ],
+  "auxiliaries": [
+    {
+      "id": "Suitability",
+      "label": "Suitability",
+      "initial_value": 0.85,
+      "note": "Derived as auxiliary: computed variable"
+    },
+    {
+      "id": "Economic_Resilience",
+      "label": "Economic Resilience",
+      "initial_value": 180000.0,
+      "note": "Derived as auxiliary: computed variable"
+    }
+  ],
+  "parameters": [
+    {
+      "id": "Community_Governance",
+      "label": "Community Governance",
+      "value": 0.72,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    },
+    {
+      "id": "Water_Requirement",
+      "label": "Water Requirement",
+      "value": 0.5,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    },
+    {
+      "id": "Grazing_Intensity",
+      "label": "Grazing Intensity",
+      "value": 0.5,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    },
+    {
+      "id": "Grazable_Area",
+      "label": "Grazable Area",
+      "value": 35.0,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    },
+    {
+      "id": "Governance_Capacity",
+      "label": "Governance Capacity",
+      "value": 2500000.0,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    },
+    {
+      "id": "Tourism_Pressure",
+      "label": "Tourism Pressure",
+      "value": 23.0,
+      "unit": "tbd",
+      "note": "Derived as parameter: exogenous driver with no incoming links"
+    }
+  ]
+}

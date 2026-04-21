@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-04-21T15:44:39.782594Z",
+  "rainfallIndex": 0.6,
+  "communitySupportIndex": 0.8140000000000002,
+  "sdModelOutput": {
+    "t": 30,
+    "Biomass_Stock": 2636.437,
+    "Fire_Risk": 0.0,
+    "Management_Capacity": 0.646,
+    "Suitability": 0.9,
+    "Community_Governance": 0.72,
+    "Governance_Capacity": 2500000.0,
+    "Economic_Resilience": 180000.0,
+    "Grazing_Intensity": 0.5,
+    "Tourism_Pressure": 23.0,
+    "Water_Requirement": 0.5
+  },
+  "featureUpdates": [
+    {
+      "id": "Project_MicroHydro_Alpha",
+      "type": "Energy.ProjectSite",
+      "waterAvailability": 0.6940000000000001,
+      "suitabilityNext": 0.9
+    },
+    {
+      "id": "EucalyptusZone_12",
+      "type": "EcologicalZone",
+      "biomassNext": 2636.437,
+      "fireRiskNext": 0.0,
+      "grazingCapacity": 21.0
+    }
+  ]
+}

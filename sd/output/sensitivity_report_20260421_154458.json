@@ -1,0 +1,1250 @@
+{
+  "timestamp": "2026-04-21T15:44:58.984064Z",
+  "config": {
+    "run_length": 20,
+    "sweep_steps": 5,
+    "swept_parameters": [
+      "Community_Governance",
+      "Grazing_Intensity",
+      "Tourism_Pressure",
+      "Governance_Capacity",
+      "Economic_Resilience",
+      "Water_Requirement"
+    ],
+    "output_variables": [
+      "Biomass_Stock",
+      "Fire_Risk",
+      "Management_Capacity",
+      "Suitability"
+    ]
+  },
+  "oat_sensitivity": {
+    "Community_Governance": {
+      "sweep": [
+        {
+          "param_value": 0.2,
+          "Biomass_Stock": 1509.109,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.438,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.4,
+          "Biomass_Stock": 1645.227,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.518,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.6,
+          "Biomass_Stock": 1789.242,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.598,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.8,
+          "Biomass_Stock": 1942.693,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.678,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 1.0,
+          "Biomass_Stock": 2106.255,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.758,
+          "Suitability": 0.9
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 597.146,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.32,
+        "Suitability": 0.0
+      }
+    },
+    "Grazing_Intensity": {
+      "sweep": [
+        {
+          "param_value": 0.1,
+          "Biomass_Stock": 2555.678,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.3,
+          "Biomass_Stock": 2193.2,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.5,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.7,
+          "Biomass_Stock": 1609.374,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 0.9,
+          "Biomass_Stock": 1376.12,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 1179.558,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.0,
+        "Suitability": 0.0
+      }
+    },
+    "Tourism_Pressure": {
+      "sweep": [
+        {
+          "param_value": 5.0,
+          "Biomass_Stock": 1886.003,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 23.75,
+          "Biomass_Stock": 1879.583,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 42.5,
+          "Biomass_Stock": 1872.0,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 61.25,
+          "Biomass_Stock": 1862.48,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 80.0,
+          "Biomass_Stock": 1850.277,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 35.726,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.0,
+        "Suitability": 0.0
+      }
+    },
+    "Governance_Capacity": {
+      "sweep": [
+        {
+          "param_value": 500000.0,
+          "Biomass_Stock": 1786.982,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.606,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 1875000.0,
+          "Biomass_Stock": 1865.046,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.6335,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 3250000.0,
+          "Biomass_Stock": 1892.49,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.661,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 4625000.0,
+          "Biomass_Stock": 1906.724,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.6885,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 6000000.0,
+          "Biomass_Stock": 1909.539,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.696,
+          "Suitability": 0.9
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 122.557,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.09,
+        "Suitability": 0.0
+      }
+    },
+    "Economic_Resilience": {
+      "sweep": [
+        {
+          "param_value": 50000.0,
+          "Biomass_Stock": 1870.108,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.568,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 162500.0,
+          "Biomass_Stock": 1878.664,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.6355,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 275000.0,
+          "Biomass_Stock": 1885.73,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.703,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 387500.0,
+          "Biomass_Stock": 1891.574,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.7705,
+          "Suitability": 0.9
+        },
+        {
+          "param_value": 500000.0,
+          "Biomass_Stock": 1896.351,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.838,
+          "Suitability": 0.9
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 26.243,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.27,
+        "Suitability": 0.0
+      }
+    },
+    "Water_Requirement": {
+      "sweep": [
+        {
+          "param_value": 0.2,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.96
+        },
+        {
+          "param_value": 0.375,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.925
+        },
+        {
+          "param_value": 0.55,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.89
+        },
+        {
+          "param_value": 0.725,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.855
+        },
+        {
+          "param_value": 0.9,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.82
+        }
+      ],
+      "influence": {
+        "Biomass_Stock": 0.0,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.0,
+        "Suitability": 0.14
+      }
+    }
+  },
+  "scenario_comparison": {
+    "baseline": {
+      "final": {
+        "Biomass_Stock": 1879.889,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.646,
+        "Suitability": 0.9
+      },
+      "trajectory": [
+        {
+          "t": 0,
+          "Biomass_Stock": 1000.0,
+          "Fire_Risk": 0.75,
+          "Management_Capacity": 0.8,
+          "Suitability": 0.85,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 1,
+          "Biomass_Stock": 1023.15,
+          "Fire_Risk": 0.6446,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.5777,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 2,
+          "Biomass_Stock": 1048.454,
+          "Fire_Risk": 0.5401,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.6299,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 3,
+          "Biomass_Stock": 1076.027,
+          "Fire_Risk": 0.4366,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.6817,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 4,
+          "Biomass_Stock": 1105.995,
+          "Fire_Risk": 0.3342,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.7329,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 5,
+          "Biomass_Stock": 1138.497,
+          "Fire_Risk": 0.233,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.7835,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 6,
+          "Biomass_Stock": 1173.682,
+          "Fire_Risk": 0.1331,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.8334,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 7,
+          "Biomass_Stock": 1211.713,
+          "Fire_Risk": 0.0346,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.8827,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 8,
+          "Biomass_Stock": 1252.767,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 9,
+          "Biomass_Stock": 1295.862,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 10,
+          "Biomass_Stock": 1340.44,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 11,
+          "Biomass_Stock": 1386.551,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 12,
+          "Biomass_Stock": 1434.248,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 13,
+          "Biomass_Stock": 1483.586,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 14,
+          "Biomass_Stock": 1534.621,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 15,
+          "Biomass_Stock": 1587.412,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 16,
+          "Biomass_Stock": 1642.019,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 17,
+          "Biomass_Stock": 1698.504,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 18,
+          "Biomass_Stock": 1756.933,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 19,
+          "Biomass_Stock": 1817.371,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 20,
+          "Biomass_Stock": 1879.889,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.646,
+          "Suitability": 0.9,
+          "Community_Governance": 0.72,
+          "Governance_Capacity": 2500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.5,
+          "Tourism_Pressure": 23.0,
+          "Water_Requirement": 0.5
+        }
+      ]
+    },
+    "intervention": {
+      "final": {
+        "Biomass_Stock": 2470.152,
+        "Fire_Risk": 0.0,
+        "Management_Capacity": 0.738,
+        "Suitability": 0.9
+      },
+      "trajectory": [
+        {
+          "t": 0,
+          "Biomass_Stock": 1000.0,
+          "Fire_Risk": 0.75,
+          "Management_Capacity": 0.8,
+          "Suitability": 0.85,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 1,
+          "Biomass_Stock": 1036.75,
+          "Fire_Risk": 0.6028,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.5986,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 2,
+          "Biomass_Stock": 1077.14,
+          "Fire_Risk": 0.4571,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.6715,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 3,
+          "Biomass_Stock": 1121.457,
+          "Fire_Risk": 0.313,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.7435,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 4,
+          "Biomass_Stock": 1170.022,
+          "Fire_Risk": 0.1707,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.8147,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 5,
+          "Biomass_Stock": 1223.187,
+          "Fire_Risk": 0.0303,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.8848,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 6,
+          "Biomass_Stock": 1281.344,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 7,
+          "Biomass_Stock": 1342.849,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 8,
+          "Biomass_Stock": 1407.306,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 9,
+          "Biomass_Stock": 1474.857,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 10,
+          "Biomass_Stock": 1545.65,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 11,
+          "Biomass_Stock": 1619.841,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 12,
+          "Biomass_Stock": 1697.593,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 13,
+          "Biomass_Stock": 1779.077,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 14,
+          "Biomass_Stock": 1864.473,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 15,
+          "Biomass_Stock": 1953.968,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 16,
+          "Biomass_Stock": 2047.758,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 17,
+          "Biomass_Stock": 2146.05,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 18,
+          "Biomass_Stock": 2249.06,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 19,
+          "Biomass_Stock": 2357.015,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 20,
+          "Biomass_Stock": 2470.152,
+          "Fire_Risk": 0.0,
+          "Management_Capacity": 0.738,
+          "Suitability": 0.9,
+          "Community_Governance": 0.9,
+          "Governance_Capacity": 3500000.0,
+          "Economic_Resilience": 180000.0,
+          "Grazing_Intensity": 0.25,
+          "Tourism_Pressure": 15.0,
+          "Water_Requirement": 0.5
+        }
+      ]
+    },
+    "pessimistic": {
+      "final": {
+        "Biomass_Stock": 1241.338,
+        "Fire_Risk": 0.2044,
+        "Management_Capacity": 0.432,
+        "Suitability": 0.7978
+      },
+      "trajectory": [
+        {
+          "t": 0,
+          "Biomass_Stock": 1000.0,
+          "Fire_Risk": 0.75,
+          "Management_Capacity": 0.8,
+          "Suitability": 0.85,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 1,
+          "Biomass_Stock": 1006.75,
+          "Fire_Risk": 0.7189,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.5405,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 2,
+          "Biomass_Stock": 1014.015,
+          "Fire_Risk": 0.6881,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.556,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 3,
+          "Biomass_Stock": 1021.801,
+          "Fire_Risk": 0.6576,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.5712,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 4,
+          "Biomass_Stock": 1030.114,
+          "Fire_Risk": 0.6274,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.5863,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 5,
+          "Biomass_Stock": 1038.962,
+          "Fire_Risk": 0.5975,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.6012,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 6,
+          "Biomass_Stock": 1048.352,
+          "Fire_Risk": 0.568,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.616,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 7,
+          "Biomass_Stock": 1058.29,
+          "Fire_Risk": 0.5388,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.6306,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 8,
+          "Biomass_Stock": 1068.786,
+          "Fire_Risk": 0.51,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.645,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 9,
+          "Biomass_Stock": 1079.848,
+          "Fire_Risk": 0.4817,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.6592,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 10,
+          "Biomass_Stock": 1091.483,
+          "Fire_Risk": 0.4538,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.6731,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 11,
+          "Biomass_Stock": 1103.7,
+          "Fire_Risk": 0.4264,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.6868,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 12,
+          "Biomass_Stock": 1116.507,
+          "Fire_Risk": 0.3994,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7003,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 13,
+          "Biomass_Stock": 1129.915,
+          "Fire_Risk": 0.373,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7135,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 14,
+          "Biomass_Stock": 1143.932,
+          "Fire_Risk": 0.3471,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7265,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 15,
+          "Biomass_Stock": 1158.567,
+          "Fire_Risk": 0.3218,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7391,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 16,
+          "Biomass_Stock": 1173.829,
+          "Fire_Risk": 0.297,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7515,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 17,
+          "Biomass_Stock": 1189.729,
+          "Fire_Risk": 0.2729,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7636,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 18,
+          "Biomass_Stock": 1206.274,
+          "Fire_Risk": 0.2494,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7753,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 19,
+          "Biomass_Stock": 1223.474,
+          "Fire_Risk": 0.2266,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7867,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        },
+        {
+          "t": 20,
+          "Biomass_Stock": 1241.338,
+          "Fire_Risk": 0.2044,
+          "Management_Capacity": 0.432,
+          "Suitability": 0.7978,
+          "Community_Governance": 0.4,
+          "Governance_Capacity": 1200000.0,
+          "Economic_Resilience": 80000.0,
+          "Grazing_Intensity": 0.75,
+          "Tourism_Pressure": 45.0,
+          "Water_Requirement": 0.5
+        }
+      ]
+    }
+  },
+  "parameter_rankings": {
+    "Biomass_Stock": [
+      {
+        "parameter": "Grazing_Intensity",
+        "influence_on_Biomass_Stock": 1179.558
+      },
+      {
+        "parameter": "Community_Governance",
+        "influence_on_Biomass_Stock": 597.146
+      },
+      {
+        "parameter": "Governance_Capacity",
+        "influence_on_Biomass_Stock": 122.557
+      },
+      {
+        "parameter": "Tourism_Pressure",
+        "influence_on_Biomass_Stock": 35.726
+      },
+      {
+        "parameter": "Economic_Resilience",
+        "influence_on_Biomass_Stock": 26.243
+      },
+      {
+        "parameter": "Water_Requirement",
+        "influence_on_Biomass_Stock": 0.0
+      }
+    ],
+    "Fire_Risk": [
+      {
+        "parameter": "Community_Governance",
+        "influence_on_Fire_Risk": 0.0
+      },
+      {
+        "parameter": "Grazing_Intensity",
+        "influence_on_Fire_Risk": 0.0
+      },
+      {
+        "parameter": "Tourism_Pressure",
+        "influence_on_Fire_Risk": 0.0
+      },
+      {
+        "parameter": "Governance_Capacity",
+        "influence_on_Fire_Risk": 0.0
+      },
+      {
+        "parameter": "Economic_Resilience",
+        "influence_on_Fire_Risk": 0.0
+      },
+      {
+        "parameter": "Water_Requirement",
+        "influence_on_Fire_Risk": 0.0
+      }
+    ],
+    "Management_Capacity": [
+      {
+        "parameter": "Community_Governance",
+        "influence_on_Management_Capacity": 0.32
+      },
+      {
+        "parameter": "Economic_Resilience",
+        "influence_on_Management_Capacity": 0.27
+      },
+      {
+        "parameter": "Governance_Capacity",
+        "influence_on_Management_Capacity": 0.09
+      },
+      {
+        "parameter": "Grazing_Intensity",
+        "influence_on_Management_Capacity": 0.0
+      },
+      {
+        "parameter": "Tourism_Pressure",
+        "influence_on_Management_Capacity": 0.0
+      },
+      {
+        "parameter": "Water_Requirement",
+        "influence_on_Management_Capacity": 0.0
+      }
+    ],
+    "Suitability": [
+      {
+        "parameter": "Water_Requirement",
+        "influence_on_Suitability": 0.14
+      },
+      {
+        "parameter": "Community_Governance",
+        "influence_on_Suitability": 0.0
+      },
+      {
+        "parameter": "Grazing_Intensity",
+        "influence_on_Suitability": 0.0
+      },
+      {
+        "parameter": "Tourism_Pressure",
+        "influence_on_Suitability": 0.0
+      },
+      {
+        "parameter": "Governance_Capacity",
+        "influence_on_Suitability": 0.0
+      },
+      {
+        "parameter": "Economic_Resilience",
+        "influence_on_Suitability": 0.0
+      }
+    ]
+  }
+}

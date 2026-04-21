@@ -2,3 +2,6 @@ Flask==3.0.0
 requests==2.31.0
 python-dotenv==1.0.0
 watchdog==3.0.0
+# SD module dependencies (SD GitHub Reference integration, April 2026)
+pysd>=3.13.0
+pandas>=2.0.0
