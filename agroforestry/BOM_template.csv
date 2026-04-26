@@ -1,0 +1,37 @@
+species_code,common_name,scientific_name,stratum,qty_per_ha,qty_total,stock_type,source,unit_cost_eur,total_cost_eur,planting_phase,slope_zone,notes
+JUNP,Juniper,Juniperus sp.,U,100,,pot_1L,nursery,3.50,,Phase_1,ridge_upper,Windbreak rows first - plant before all others
+TAGS,Tagasaste,Cytisus proliferus,U,200,,plug,nursery,1.50,,Phase_1,upper_mid,Nurse plant + N-fix - establish Year 1
+BRHO,Soft Brome,Bromus hordeaceus,G,,,seed_bulk,self_propagated,0.05,,Phase_1,all_zones,Sow as living mulch between all tree rows
+BRSC,Broom Brome,Bromus scoparius,G,,,seed_bulk,self_propagated,0.04,,Phase_1,upper_mid,Compact - good under tree canopy
+SAVE,Wild Clary,Salvia verbenaca,H,,,seed,self_propagated,0.08,,Phase_1,upper_mid,Native Mediterranean sage companion
+TRAN,Narrow-leaved Clover,Trifolium angustifolium,G,,,seed_bulk,seed_supplier,0.06,,Phase_1,mid_lower,N-fix ground cover
+CARB,Carob,Ceratonia siliqua,C,50,,bare_root_2yr,nursery,8.00,,Phase_2,upper_ridge,Drought anchor - plant upper terraces first
+OLIV,Olive,Olea europaea,C,100,,bare_root_2yr,nursery,12.00,,Phase_2,upper_mid,Core crop
+POMA,Pomegranate,Punica granatum,C,80,,bare_root_2yr,nursery,10.00,,Phase_2,upper_mid,With carob and olive on dry slopes
+FIGT,Fig,Ficus carica,C,80,,bare_root_2yr,local_propagation,0.00,,Phase_2,upper_mid_lower,Self-propagate from cuttings
+ANGO,Almond,Prunus dulcis,C,100,,bare_root_2yr,nursery,10.00,,Phase_2,upper_mid,Mid-upper sweet spot
+CHST,Chestnut,Castanea sativa,E,40,,bare_root_2yr,local_nursery,15.00,,Phase_2,mid_lower,Native to Monchique - priority species
+WALN,Walnut,Juglans regia,E,30,,bare_root_2yr,nursery,18.00,,Phase_2,mid_lower,Needs deep soil - lower terrace
+ELDR,Elderberry,Sambucus nigra,U,50,,pot,local_propagation,0.00,,Phase_2,lower_riparian,Water zone - near drainage lines
+POMA_MADRE,Pride of Madeira,Echium candicans,S,100,,plug,nursery,2.50,,Phase_2,upper_mid,Slope erosion control
+LAVA,Lavender (cascading),Lavandula stoechas,H,300,,plug,self_propagated,1.00,,Phase_3,upper_mid,Garrigue carpet under olive/almond
+OREG,Oregano,Origanum vulgare,H,200,,plug,self_propagated,0.80,,Phase_3,upper_mid,Cash herb + pollinator
+THYM,Thyme,Thymus vulgaris,G,400,,plug,self_propagated,0.60,,Phase_3,upper_mid,Creeping ground cover - erosion
+SAGE,Purple Sage,Salvia officinalis,H,150,,plug,self_propagated,1.00,,Phase_3,upper_mid,Pest repellent + cash herb
+CABU,Shepherd's Purse,Capsella bursa-pastoris,G,,,seed,self_propagated,0.03,,Phase_3,mid_lower,Dynamic accumulator
+MIOR,Lesser Snapdragon,Misopates orontium,H,,,seed,self_propagated,0.05,,Phase_3,upper_mid,Pollinator annual
+NIDA,Love-in-a-Mist,Nigella damascena,H,,,seed,seed_supplier,0.10,,Phase_3,mid,Ornamental pollinator + seed value
+GOJI,Goji Berry,Lycium barbarum,S,40,,bare_root,nursery,6.00,,Phase_3,mid_lower,Cash fruit shrub
+ANVU,Kidney Vetch,Anthyllis vulneraria,H,,,seed,seed_supplier,0.08,,Phase_3,upper_mid,Native N-fix for rocky slopes
+GERA,Geranium,Pelargonium sp.,H,100,,pot,self_propagated,0.50,,Phase_3,mid,Pest deterrent filler
+LILI,Lily,Lilium sp.,H,50,,bulb,nursery,2.00,,Phase_3,mid,Ornamental + pollinator
+ECHY,Echium/Viper's Bugloss,Echium plantagineum,H,,,seed,self_propagated,0.04,,Phase_3,upper_mid,Strong pollinator
+APRC,Apricot,Prunus armeniaca,C,60,,bare_root_2yr,nursery,12.00,,Phase_3,mid_lower,Frost-protected positions only
+COMF,Comfrey,Symphytum officinale,H,100,,crown_division,self_propagated,0.50,,Phase_3,mid_lower,Dynamic accumulator near tree roots
+GLSE,Corn Marigold,Glebionis segetum,H,,,seed,seed_supplier,0.06,,Phase_3,mid,Pollinator + mulch
+POTA,Potato,Solanum tuberosum,R,,,seed_potato,farm_saved,0.80,,Phase_1_rotation,mid_lower,Year 1-4 in alleys only - then remove
+MACA,Macadamia,Macadamia integrifolia,C,20,,pot_3L,specialist_nursery,25.00,,Phase_4,lower_sheltered,FROST SENSITIVE - sheltered microclimate only
+CHAY,Chayote/Chuchu,Sechium edule,V,10,,plant,local_market,3.00,,Phase_4,terrace_base,Must be at wettest lowest point
+RASP,Raspberry,Rubus idaeus,S,60,,bare_root,nursery,4.00,,Phase_4,lower,Needs moisture - lower terrace water zone
+PHYS,Physalis,Physalis peruviana,H,50,,plant,nursery,2.50,,Phase_4,mid_lower,Short-lived perennial or annual
+MINT,Mint (contained),Mentha sp.,G,20,,plant,self_propagated,0.00,,Phase_4,lower_contained,CONTAIN IN POTS near water source

@@ -1,0 +1,712 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "created": "2026-04-25",
+    "maintainer": "JRBD / Conscious Circle / Federated OSDK Platform",
+    "description": "Global species database for the OSDK Agroforestry Design Module. Each species carries attributes for stratification, ecological role, site suitability, guild compatibility, DEXi evaluation scores (where available), production traits, and implementation parameters. Designed for use in the permaculture design workflow: GIS site assessment → species selection → stratification composer → BOM/MEL export.",
+    "reference_case": "Montalma / Monte da Fóia, Monchique, Portugal (south-facing, 30-40°, 400-900m altitude, 1000-2000mm rainfall, foíte bedrock)",
+    "sources": [
+      "Nature Plants 2024 — Native Plants for Greening Mediterranean Agroecosystems (Zenodo:3460431)",
+      "LIFE AgroForAdapt (LIFE20 CCA/ES/001682) — agroforadapt.eu",
+      "Danyadara Syntropic Agroforestry project, Andalusia — danyadara.com",
+      "Iberian Agroforestry Pioneers Network — resilience-blog.com (EFI/LIFE)",
+      "Attached field data: Species_data.xlsx, DEXi_file_for_species_evaluation.dxi",
+      "PRIMA 2024 — Most Important Fruit Crops in the Mediterranean Basin (UniMilano)",
+      "Cal Poly Demonstration Orchard thesis 2023",
+      "JRBD field observation + Montalma inventory (2025-2026)"
+    ]
+  },
+
+  "strata": {
+    "E": "Emergent / tall canopy (>10m)",
+    "C": "Canopy (5-10m)",
+    "U": "Understory / sub-canopy (2-5m)",
+    "S": "Shrub layer (0.5-2m)",
+    "H": "Herbaceous / ground cover (<0.5m)",
+    "G": "Ground cover / creeping",
+    "V": "Vine / climber",
+    "R": "Rhizosphere / root crops"
+  },
+
+  "ecological_roles": {
+    "N_FIX": "Nitrogen fixer",
+    "DYN_ACC": "Dynamic accumulator (deep root nutrient miner)",
+    "POLL": "Pollinator attractor",
+    "PEST_REP": "Pest repellent",
+    "WIND": "Windbreak / shelter",
+    "EROSION": "Erosion control",
+    "MULCH": "Chop-and-drop biomass",
+    "NURSE": "Nurse plant (shade/shelter for establishing species)",
+    "CASH_FRUIT": "Cash crop — fruit/nut",
+    "CASH_VEG": "Cash crop — vegetable",
+    "CASH_HERB": "Cash crop — aromatic/medicinal",
+    "CASH_SEED": "Cash crop — seed production",
+    "BIOMASS": "Biomass / fodder",
+    "SOIL_STAB": "Soil stabilisation",
+    "LIVING_MULCH": "Living mulch",
+    "PEST_HOST": "Beneficial insect / pest host plant"
+  },
+
+  "dexi_attributes": {
+    "suitability_index": "Overall DEXi suitability",
+    "olive_farming": "Suitability for olive/tree-crop farming systems",
+    "crop_management": "Crop management score",
+    "trafficability": "Trafficability (plant height)",
+    "cover": "Cover score",
+    "seasonal_growth": "Seasonal growth timing",
+    "contained": "Growth habit containment",
+    "biodiversity": "Biodiversity contribution",
+    "seed_farming": "Seed farming suitability",
+    "mechanization": "Scalable through mechanisation",
+    "amenable_cultivation": "Amenable to cultivation"
+  },
+
+  "species": {
+
+    "ANGO": {
+      "common_name": "Almond",
+      "scientific_name": "Prunus dulcis",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT", "POLL"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "well_drained_rocky",
+      "guild_partners": ["SAVE", "TRAN", "LAVA", "OREG", "TAGS", "JUNS"],
+      "juglone_sensitive": false,
+      "danyadara_system": true,
+      "notes": "Core Iberian species. Thrives upper/mid terraces. Pairs well with nitrogen-fixing shrubs and aromatic ground cover. Syntropic sequence: Fig-Almond-Apricot-Pomegranate."
+    },
+
+    "WALN": {
+      "common_name": "Walnut",
+      "scientific_name": "Juglans regia",
+      "stratum": "E",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "moderate_high",
+      "slope_zones": ["mid", "lower"],
+      "soil_preference": "deep_fertile_moist",
+      "guild_partners": ["TRAN", "MYOP", "TAGS"],
+      "juglone_producer": true,
+      "juglone_note": "Produces juglone — allelopathic to many species. Use juglone-tolerant understory only. Compatible: clover, tagasaste, mulberry, currant, elderberry, grapes.",
+      "notes": "Needs deep, moisture-retentive soil. Mid to lower terrace only at Monchique."
+    },
+
+    "CHST": {
+      "common_name": "Chestnut",
+      "scientific_name": "Castanea sativa",
+      "stratum": "E",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "moderate_high",
+      "slope_zones": ["mid", "lower"],
+      "soil_preference": "deep_acidic_moist",
+      "guild_partners": ["TRAN", "ANVU", "SAVE", "MIOR"],
+      "juglone_sensitive": false,
+      "notes": "Indigenous to Serra de Monchique. Acid foíte soil ideal. Native ecosystem anchor species. High value staple. Priority species for Montalma."
+    },
+
+    "CARB": {
+      "common_name": "Carob",
+      "scientific_name": "Ceratonia siliqua",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT", "WIND", "EROSION"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "extreme",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "ridge"],
+      "soil_preference": "poor_rocky_calcareous",
+      "guild_partners": ["LAVA", "OREG", "THYM", "POMA"],
+      "notes": "Drought anchor. Upper terrace champion. Zero summer irrigation once established. Higher resilience than olive on poor dry slopes. Long-lived, high biomass."
+    },
+
+    "OLIV": {
+      "common_name": "Olive",
+      "scientific_name": "Olea europaea",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "well_drained_any",
+      "guild_partners": ["SAVE", "BRHO", "BRSC", "CABU", "MIOR", "NIDA", "TRAN", "LAVA"],
+      "dexi_companion_suitability": "primary_target_crop",
+      "notes": "Primary DEXi study target crop. Excellent data on companion species. Use native ground covers from the 35-species pool under olive canopy."
+    },
+
+    "FIGT": {
+      "common_name": "Fig",
+      "scientific_name": "Ficus carica",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid", "lower"],
+      "soil_preference": "any_well_drained",
+      "guild_partners": ["TAGS", "OREG", "LAVA", "THYM"],
+      "danyadara_system": true,
+      "notes": "Most versatile tree. Thrives across slope zones. Likes richer conditions at base. Syntropic lead species."
+    },
+
+    "APRC": {
+      "common_name": "Apricot",
+      "scientific_name": "Prunus armeniaca",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT", "POLL"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low_moderate",
+      "slope_zones": ["mid", "lower"],
+      "soil_preference": "well_drained",
+      "guild_partners": ["LAVA", "TAGS", "TRAN", "COMF", "YRRW"],
+      "frost_note": "Blossoms frost-sensitive — avoid frost pockets (valley floor thermal inversion zones at Monchique)",
+      "danyadara_system": true,
+      "notes": "Specific guild: nitrogen fixers (tagasaste, clover, lupines), dynamic accumulators (comfrey, yarrow), pollinator attractors (lavender), pest repellents (garlic, chives), ground covers (strawberry)."
+    },
+
+    "POMA": {
+      "common_name": "Pomegranate",
+      "scientific_name": "Punica granatum",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "poor_dry_any",
+      "guild_partners": ["CARB", "OLIV", "LAVA", "THYM"],
+      "danyadara_system": true,
+      "notes": "Extremely drought-tolerant once established. Upper terrace partner for carob and olive."
+    },
+
+    "MACA": {
+      "common_name": "Macadamia",
+      "scientific_name": "Macadamia integrifolia",
+      "stratum": "C",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "possible_microclimate_dependent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "very_low",
+      "water_use": "moderate_high",
+      "slope_zones": ["lower", "sheltered"],
+      "soil_preference": "deep_moist_well_drained",
+      "frost_note": "MUST be planted in frost-protected microclimate — base of warm wall, or under established canopy. Highest risk species in the portfolio.",
+      "notes": "High-risk/high-reward. Only in best sheltered, lowest-frost zone. Worth attempting given Monchique's mild winters (rarely below 2-5°C)."
+    },
+
+    "ELDR": {
+      "common_name": "Elderberry",
+      "scientific_name": "Sambucus nigra",
+      "stratum": "U",
+      "ecological_roles": ["CASH_FRUIT", "POLL", "PEST_REP"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "low",
+      "frost_tolerance": "high",
+      "water_use": "high",
+      "slope_zones": ["lower", "riparian"],
+      "soil_preference": "moist_fertile",
+      "guild_partners": ["CHST", "WALN", "MINT", "RASP"],
+      "notes": "Water-zone plant. Ideal along drainage lines, at terrace base. Attracts pollinators and beneficial insects."
+    },
+
+    "JUNP": {
+      "common_name": "Juniper",
+      "scientific_name": "Juniperus sp.",
+      "stratum": "U",
+      "ecological_roles": ["WIND", "EROSION", "CASH_FRUIT"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "very_high",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "ridge"],
+      "soil_preference": "any",
+      "guild_partners": ["CARB", "POMA", "LAVA"],
+      "notes": "Primary windbreak species. Plant on ridge and upper terrace margins first. Dense root system for slope stabilisation."
+    },
+
+    "TAGS": {
+      "common_name": "Tagasaste / Tree Lucerne",
+      "scientific_name": "Cytisus proliferus",
+      "stratum": "U",
+      "ecological_roles": ["N_FIX", "NURSE", "MULCH", "WIND", "BIOMASS"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "any_free_draining",
+      "guild_partners": ["ALMO", "OLIV", "CARB", "APRC", "POMA"],
+      "notes": "WORKHORSE species. Fast-growing nitrogen fixer. Plant as nurse plant first (Year 1) to shelter other species. Chop-and-drop mulch. Creates immediate living windbreak. Do not plant in frost pockets."
+    },
+
+    "GOJI": {
+      "common_name": "Goji Berry",
+      "scientific_name": "Lycium barbarum",
+      "stratum": "S",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "high",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["mid", "lower"],
+      "soil_preference": "well_drained_any",
+      "guild_partners": ["TAGS", "LAVA", "MIOR"],
+      "notes": "Adaptable. Benefits from some moisture but tolerates drier conditions. Good mid-terrace shrub layer."
+    },
+
+    "RASP": {
+      "common_name": "Raspberry",
+      "scientific_name": "Rubus idaeus",
+      "stratum": "S",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "possible",
+      "drought_tolerance": "low",
+      "frost_tolerance": "high",
+      "water_use": "high",
+      "slope_zones": ["lower"],
+      "soil_preference": "moist_fertile",
+      "guild_partners": ["ELDR", "MINT", "COMF"],
+      "notes": "Needs consistent moisture. Lower terrace or near water source only. Morning sun, afternoon shade preferred."
+    },
+
+    "PHYS": {
+      "common_name": "Physalis / Cape Gooseberry",
+      "scientific_name": "Physalis peruviana",
+      "stratum": "H",
+      "ecological_roles": ["CASH_FRUIT"],
+      "monchique_suitability": "possible",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "low",
+      "water_use": "moderate",
+      "slope_zones": ["lower", "mid"],
+      "soil_preference": "well_drained_fertile",
+      "notes": "Treat as annual or short-lived perennial in Monchique. Likes good, well-drained soil."
+    },
+
+    "CHAY": {
+      "common_name": "Chuchu / Chayote",
+      "scientific_name": "Sechium edule",
+      "stratum": "V",
+      "ecological_roles": ["CASH_VEG"],
+      "monchique_suitability": "excellent_at_base",
+      "drought_tolerance": "low",
+      "frost_tolerance": "very_low",
+      "water_use": "very_high",
+      "slope_zones": ["lower", "terrace_base"],
+      "soil_preference": "moist_fertile_deep",
+      "guild_partners": ["ELDR", "MINT"],
+      "notes": "MUST be placed at lowest, wettest point of system. Moisture lover. Surprisingly productive. Frost-tender — plant in most sheltered zone."
+    },
+
+    "LAVA": {
+      "common_name": "Lavender (cascading)",
+      "scientific_name": "Lavandula stoechas / L. dentata",
+      "stratum": "H",
+      "ecological_roles": ["PEST_REP", "POLL", "CASH_HERB", "EROSION", "SOIL_STAB"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "poor_dry_well_drained",
+      "dexi_equivalent": "SAVE",
+      "notes": "Classic garrigue ground cover. Use on dry upper/mid terraces. Excellent pollinator support and slope erosion control. Cascading form suits slope."
+    },
+
+    "OREG": {
+      "common_name": "Oregano",
+      "scientific_name": "Origanum vulgare",
+      "stratum": "H",
+      "ecological_roles": ["PEST_REP", "POLL", "CASH_HERB"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "dry_alkaline_rocky"
+    },
+
+    "THYM": {
+      "common_name": "Thyme",
+      "scientific_name": "Thymus vulgaris",
+      "stratum": "G",
+      "ecological_roles": ["PEST_REP", "POLL", "CASH_HERB", "LIVING_MULCH", "EROSION"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "dry_rocky"
+    },
+
+    "SAGE": {
+      "common_name": "Purple Sage",
+      "scientific_name": "Salvia officinalis (purple) / S. purpurea",
+      "stratum": "H",
+      "ecological_roles": ["PEST_REP", "POLL", "CASH_HERB"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "dry_well_drained"
+    },
+
+    "GERA": {
+      "common_name": "Geranium",
+      "scientific_name": "Pelargonium sp.",
+      "stratum": "H",
+      "ecological_roles": ["PEST_REP", "POLL"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "moderate",
+      "water_use": "low_moderate",
+      "slope_zones": ["mid"],
+      "soil_preference": "well_drained"
+    },
+
+    "POMA_MADRE": {
+      "common_name": "Pride of Madeira",
+      "scientific_name": "Echium candicans",
+      "stratum": "S",
+      "ecological_roles": ["POLL", "EROSION", "SOIL_STAB"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "soil_preference": "any_well_drained",
+      "notes": "Structural support on slopes. Great for erosion control and mass pollinator attraction. Native Macaronesian origin — well adapted to Atlantic Mediterranean."
+    },
+
+    "MINT": {
+      "common_name": "Mint",
+      "scientific_name": "Mentha sp.",
+      "stratum": "G",
+      "ecological_roles": ["PEST_REP", "CASH_HERB"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "low",
+      "frost_tolerance": "moderate",
+      "water_use": "high",
+      "slope_zones": ["lower"],
+      "management_note": "CONTAIN in pots or bounded wet zone. Aggressively spreading. Ideal near water source.",
+      "notes": "Excellent pest repellent and cash herb. Keep confined."
+    },
+
+    "BUDL": {
+      "common_name": "Buddleia / Butterfly Bush",
+      "scientific_name": "Buddleja davidii",
+      "stratum": "S",
+      "ecological_roles": ["POLL"],
+      "monchique_suitability": "caution",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["mid"],
+      "invasive_risk": "HIGH — check local status before planting. Use sterile varieties only.",
+      "notes": "Excellent pollinator attractor but invasive in many regions. Confirm non-invasive variety before use."
+    },
+
+    "LILI": {
+      "common_name": "Lily",
+      "scientific_name": "Lilium sp.",
+      "stratum": "H",
+      "ecological_roles": ["POLL"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "moderate",
+      "water_use": "moderate",
+      "slope_zones": ["mid"],
+      "notes": "Attractive filler. Works in mid-terrace ornamental / pollinator zones."
+    },
+
+    "ECHY": {
+      "common_name": "Echium plantagineum (Viper's Bugloss)",
+      "scientific_name": "Echium plantagineum",
+      "stratum": "H",
+      "ecological_roles": ["POLL", "LIVING_MULCH"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "ECPL",
+      "dexi_suitability": "Fair",
+      "dexi_seed_farming": "Good",
+      "production_traits": {
+        "seed_yield_m2": 1242.99,
+        "plant_height_cm": 75,
+        "avg_fruit_height_cm": 71.67,
+        "harvest_window_weeks": 4.19
+      },
+      "notes": "Strong pollinator magnet. Good seed value. Excellent for Echium-Echium candicans combination on dry slopes."
+    },
+
+    "POTA": {
+      "common_name": "Potato",
+      "scientific_name": "Solanum tuberosum",
+      "stratum": "R",
+      "ecological_roles": ["CASH_VEG"],
+      "monchique_suitability": "good_early_years",
+      "drought_tolerance": "low",
+      "frost_tolerance": "low",
+      "water_use": "moderate",
+      "slope_zones": ["mid", "lower"],
+      "rotation_note": "Annual / early-system only. Plant in alleys between young trees Years 1-4. Transition to shade-tolerant ground covers when canopy closes.",
+      "notes": "Excellent early-stage cash crop and soil loosener. Not a long-term guild member."
+    },
+
+    "BRHO": {
+      "common_name": "Soft Brome",
+      "scientific_name": "Bromus hordeaceus",
+      "stratum": "G",
+      "ecological_roles": ["SOIL_STAB", "BIOMASS", "LIVING_MULCH"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid", "lower"],
+      "dexi_code": "BRHO",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 197523.2,
+        "plant_height_cm": 79.7,
+        "avg_fruit_height_cm": 76.95,
+        "harvest_window_weeks": 2.43
+      },
+      "notes": "Top-rated DEXi species. Excellent seed farming scalability. Use as primary biomass/living mulch grass between tree rows."
+    },
+
+    "BRSC": {
+      "common_name": "Broom Brome",
+      "scientific_name": "Bromus scoparius",
+      "stratum": "G",
+      "ecological_roles": ["SOIL_STAB", "BIOMASS", "LIVING_MULCH"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "BRSC",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 224496.1,
+        "plant_height_cm": 60.15,
+        "avg_fruit_height_cm": 54.62,
+        "harvest_window_weeks": 2.29
+      },
+      "notes": "Highest seed yield in the 35-species pool. Compact height (60cm) good for trafficability under trees."
+    },
+
+    "CABU": {
+      "common_name": "Shepherd's Purse",
+      "scientific_name": "Capsella bursa-pastoris",
+      "stratum": "G",
+      "ecological_roles": ["DYN_ACC", "POLL", "LIVING_MULCH"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["mid", "lower"],
+      "dexi_code": "CABU",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 22395.06,
+        "plant_height_cm": 55,
+        "avg_fruit_height_cm": 46.11,
+        "harvest_window_weeks": 0.95
+      },
+      "notes": "Dynamic accumulator — mines deep nutrients. Short harvest window (< 1 week) but very easy to harvest mechanically. Excellent for margins and disturbed soil."
+    },
+
+    "SAVE": {
+      "common_name": "Wild Clary / Vervain Sage",
+      "scientific_name": "Salvia verbenaca",
+      "stratum": "H",
+      "ecological_roles": ["POLL", "PEST_REP", "CASH_HERB"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "SAVE",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 5860.87,
+        "plant_height_cm": 55,
+        "avg_fruit_height_cm": 62.78,
+        "harvest_window_weeks": 1.52
+      },
+      "notes": "Native sage for Mediterranean systems. Cousin to your culinary sage. Excellent under olives and almonds. Pollinator powerhouse."
+    },
+
+    "TRAN": {
+      "common_name": "Narrow-leaved Clover",
+      "scientific_name": "Trifolium angustifolium",
+      "stratum": "G",
+      "ecological_roles": ["N_FIX", "POLL", "LIVING_MULCH"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["mid", "lower"],
+      "dexi_code": "TRAN",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 1310.01,
+        "plant_height_cm": 70,
+        "avg_fruit_height_cm": 40.56,
+        "harvest_window_weeks": 1.33
+      },
+      "notes": "Nitrogen fixer. Core companion for all tree crops. Tolerates slightly more moisture than pure Mediterranean species."
+    },
+
+    "MIOR": {
+      "common_name": "Lesser Snapdragon",
+      "scientific_name": "Misopates orontium",
+      "stratum": "H",
+      "ecological_roles": ["POLL", "PEST_HOST"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "MIOR",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 14444.44,
+        "plant_height_cm": 80,
+        "avg_fruit_height_cm": 42.22,
+        "harvest_window_weeks": 2.14
+      },
+      "notes": "Excellent pollinator annual. Good for sunny edges and upper terrace margins."
+    },
+
+    "NIDA": {
+      "common_name": "Love-in-a-Mist",
+      "scientific_name": "Nigella damascena",
+      "stratum": "H",
+      "ecological_roles": ["POLL"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["mid"],
+      "dexi_code": "NIDA",
+      "dexi_suitability": "Excellent",
+      "dexi_olive_farming": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 11467.37,
+        "plant_height_cm": 40,
+        "avg_fruit_height_cm": 44.44,
+        "harvest_window_weeks": 1.24
+      },
+      "notes": "Compact ornamental annual. Excellent pollinator. Easy to harvest mechanically. High market demand."
+    },
+
+    "GLSE": {
+      "common_name": "Corn Marigold",
+      "scientific_name": "Glebionis segetum",
+      "stratum": "H",
+      "ecological_roles": ["POLL", "LIVING_MULCH"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "moderate",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["mid"],
+      "dexi_code": "GLSE",
+      "dexi_suitability": "Good",
+      "dexi_seed_farming": "Excellent",
+      "production_traits": {
+        "seed_yield_m2": 5544.7,
+        "plant_height_cm": 50,
+        "avg_fruit_height_cm": 56.11,
+        "harvest_window_weeks": 2.05
+      },
+      "notes": "High market demand, good seed farming. Excellent chop-and-drop companion."
+    },
+
+    "ANVU": {
+      "common_name": "Kidney Vetch",
+      "scientific_name": "Anthyllis vulneraria",
+      "stratum": "H",
+      "ecological_roles": ["N_FIX", "POLL", "EROSION"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "high",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "ANVU",
+      "dexi_suitability": "Fair; Good",
+      "notes": "Native nitrogen fixer for dry rocky slopes. Good under chestnuts and almonds."
+    },
+
+    "ECPL_IBERIAN": {
+      "common_name": "Cleonia / Spanish Sage",
+      "scientific_name": "Cleonia lusitanica",
+      "stratum": "H",
+      "ecological_roles": ["POLL"],
+      "monchique_suitability": "excellent",
+      "drought_tolerance": "high",
+      "frost_tolerance": "moderate",
+      "water_use": "low",
+      "slope_zones": ["upper", "mid"],
+      "dexi_code": "CLLU",
+      "dexi_suitability": "Good",
+      "notes": "Iberian endemic. Ideal for Monchique. Conservation and pollinator value."
+    },
+
+    "COMF": {
+      "common_name": "Comfrey",
+      "scientific_name": "Symphytum officinale",
+      "stratum": "H",
+      "ecological_roles": ["DYN_ACC", "MULCH", "POLL"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "low",
+      "frost_tolerance": "high",
+      "water_use": "moderate",
+      "slope_zones": ["lower", "mid"],
+      "notes": "Deep dynamic accumulator. Excellent chop-and-drop mulch. Place near apricot, elderberry, and lower terrace tree roots."
+    },
+
+    "TAGS_MYOP": {
+      "common_name": "Myoporum",
+      "scientific_name": "Myoporum laetum",
+      "stratum": "U",
+      "ecological_roles": ["WIND", "NURSE", "EROSION"],
+      "monchique_suitability": "good",
+      "drought_tolerance": "very_high",
+      "frost_tolerance": "moderate",
+      "water_use": "very_low",
+      "slope_zones": ["upper", "ridge"],
+      "notes": "Fast windbreak shrub used in Danyadara system. Check invasive status locally before planting."
+    }
+  }
+}
